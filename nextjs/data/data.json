@@ -190,8 +190,7 @@
             "dateMade": "03-09-2022",
             "dateAdded": "",
             "publish": true
-        }
-        ,
+        },
         {
             "id": 15,
             "volgorde":14,
@@ -204,6 +203,20 @@
             "sizeCM": "",
             "dateMade": "07-10-2022",
             "dateAdded": "",
+            "publish": true
+        },
+        {
+            "id": 16,
+            "volgorde":15,
+            "title": "Ja ik wil",
+            "typeArt": "Acryl op MDF plaat",
+            "src": "/img/ja_ik_wil.png",
+            "y": 3422,
+            "x": 2739,
+            "price": 40,
+            "sizeCM": "35 x 45 cm",
+            "dateMade": "24-10-2022",
+            "dateAdded": "31-10-2022",
             "publish": true
         }
     ]

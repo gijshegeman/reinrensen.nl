@@ -29,7 +29,7 @@ export default function ImgPrevieuw({
             scale: 1,
             transition: {
                 delay: .4,
-                duration: .5
+                duration: .4
             }
         },
         exit: {

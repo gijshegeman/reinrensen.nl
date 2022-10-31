@@ -48,31 +48,37 @@ export default function AanvraagForm({
             "type": "staand",
             "l": 45,
             "b": 35,
+            "price": 80,
         },
         {
             "custom": false,
             "type": "liggend",
             "l": 35,
             "b": 45,
+            "price": 80,
         },
         {
             "custom": false,
             "type": "staand",
             "l": 80,
             "b": 60,
+            "price": 100,
         },
         {
             "custom": false,
             "type": "liggend",
             "l": 60,
             "b": 80,
+            "price": 100,
         },
         {
             "custom": true,
+            "price": "prijs in overleg",
         },
         {
             "surprise": true,
             "message": "Ik laat me verrassen",
+            "price": "prijs in overleg",
         }
     ]
 
@@ -288,7 +294,13 @@ export default function AanvraagForm({
                                             }}
                                             className="relative bg-[#f7f7f7] border border-[#21564e]/10 rounded-lg p-2 z-20 shadow-sm hover:shadow-md hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100"
                                         >
-                                            {size.custom === false && (<div>L: {size.l} x B: {size.b} cm ({size.type})</div>)}
+                                            {size.custom === false && (
+                                                <div className="flex gap-2">
+                                                    <div>L: {size.l} x B: {size.b} cm ({size.type})</div>
+                                                    <div>|</div>
+                                                    <div>€ {size.price},-</div>
+                                                </div>
+                                            )}
                                             {size.custom && (
                                                 <div>
                                                     <div>Anders namelijk:</div>
@@ -311,10 +323,12 @@ export default function AanvraagForm({
                                                             value={customBreedteCM}
                                                         />
                                                         <div>cm</div>
+                                                        <div>|</div>
+                                                        <div>{size.price}</div>
                                                     </div>
                                                 </div>
                                             )}
-                                            {size.surprise && <div>{size.message}</div>}
+                                            {size.surprise && <div>{size.message} | {size.price}</div>}
                                             {index === selected && (
                                                 <motion.div
                                                     layoutId="selected"
