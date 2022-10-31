@@ -3,27 +3,31 @@ import '../styles/globals.css'
 import Header from '../components/header'
 import { AnimatePresence } from 'framer-motion'
 import Script from "next/script"
-import { server } from '../config'
 
-const links = [
-    {
-        "name": "kunstwerken",
-        "href": "/"
-    },
-    {
-        "name": "aanvraag",
-        "href": "/aanvraag"
-    },
-    {
-        "name": "bio",
-        "href": "/bio"
-    }
-]
-const customPaths = [
-    "/linktree"
-]
 
-function App({ Component, pageProps, router, links }) {
+
+
+function App({ Component, pageProps, router }) {
+
+    const links = [
+        {
+            "name": "kunstwerken",
+            "href": "/"
+        },
+        {
+            "name": "aanvraag",
+            "href": "/aanvraag"
+        },
+        {
+            "name": "bio",
+            "href": "/bio"
+        }
+    ]
+    
+    const customPaths = [
+        "/linktree"
+    ]
+
     const dev = process.env.NODE_ENV !== 'production'
     const url = `https://reinrensen.nl${router.route}`
 

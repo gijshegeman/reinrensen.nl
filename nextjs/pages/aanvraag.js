@@ -1,12 +1,12 @@
 import Layout from "../components/layout"
 import AanvraagForm from "../components/aanvraagForm"
-import LastCheck from '../components/lastCheck'
+import LastCheck from '../components/lastcheck'
 import RoundupPage from "../components/roundupPage"
 
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
-export default function Aanvraag({ }) {
+export default function Aanvraag() {
     const variants = {
         hidden: {
             opacity: 0,
@@ -24,10 +24,7 @@ export default function Aanvraag({ }) {
     const [lastCheck, setLastCheck] = useState(false)
     const [roundupPage, setRoundupPage] = useState(false)
 
-
-    const [submitted, setSubmitted] = useState(false)
     const [aanvraag, setAanvraag] = useState('')
-    const [checked, setChecked] = useState('')
 
     // Formulier
     const [voornaam, setVoornaam] = useState('')
@@ -45,10 +42,6 @@ export default function Aanvraag({ }) {
     const [bericht, setBericht] = useState('Hee Rein, \n\n...')
 
     const resetForm = () => {
-        // Mounting
-        setSubmitted(false)
-        setChecked(false)
-
         // Form
         setVoornaam('')
         setVoornaam('')
@@ -75,7 +68,7 @@ export default function Aanvraag({ }) {
     const [body, setBody] = useState(false)
     const [image, setImage] = useState(null)
     const [imageName, setImageName] = useState('')
-    
+
     const [createObjectURL, setCreateObjectURL] = useState(null)
 
     return (
@@ -117,7 +110,6 @@ export default function Aanvraag({ }) {
                                 bericht={bericht} setBericht={setBericht}
 
                                 // HandlePage
-                                setSubmitted={setSubmitted}
                                 setAanvraagForm={setAanvraagForm}
                                 setLastCheck={setLastCheck}
                                 aanvraag={aanvraag} setAanvraag={setAanvraag}
@@ -146,8 +138,6 @@ export default function Aanvraag({ }) {
                     >
                         <LastCheck
                             aanvraag={aanvraag}
-                            setSubmitted={setSubmitted}
-                            setChecked={setChecked}
                             resetForm={resetForm}
                             setLastCheck={setLastCheck}
                             setAanvraagForm={setAanvraagForm}
@@ -174,7 +164,6 @@ export default function Aanvraag({ }) {
                         }}
                     >
                         <RoundupPage
-                            setSubmitted={setSubmitted}
                             setAanvraag={setAanvraag}
                             resetForm={resetForm}
                             aanvraag={aanvraag}

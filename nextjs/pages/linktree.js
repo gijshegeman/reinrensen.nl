@@ -4,38 +4,36 @@ import instagramIcon from '../icons/instagram.svg'
 import Image from 'next/image'
 import Link from '../components/NoScrollLink'
 
-const links = [
-    {
-        "name": "Webiste",
-        "href": "/"
-    },
-    {
-        "name": "Kunstwerken",
-        "href": "/"
-    },
-    {
-        "name": "Kunstwerk aanvragen",
-        "href": "/aanvraag"
-    },
-    {
-        "name": "Buy me a coffee !",
-        "href": "/"
-    },
-    {
-        "name": "Contact",
-        "href": "/contact"
-    }
-]
 
-export default function LinkTree({ }) {
+
+export default function LinkTree() {
+    const links = [
+        {
+            "name": "Webiste",
+            "href": "/"
+        },
+        {
+            "name": "Kunstwerken",
+            "href": "/"
+        },
+        {
+            "name": "Kunstwerk aanvragen",
+            "href": "/aanvraag"
+        },
+        {
+            "name": "Contact",
+            "href": "/contact"
+        }
+    ]
+
     return (<>
         <div className="flex flex-col gap-10 items-center">
             <div className="pt-10 text-6xl text-[#21564e] font-thin tracking-wider text-white">Rein Rensen</div>
 
 
             <div className="flex flex-col gap-3 items-center text-xl font-thin tracking-widest text-white">
-                {links.map(({ href, name }) =>
-                    <Link href={href}>
+                {links.map(({ href, name }, index) =>
+                    <Link key={index} href={href}>
                         <div className='px-4 py-2 bg-[#21564e]/95 hover:bg-[#92aba6] rounded-full shadow-xl hover:shadow-2xl hover:scale-125 transform-gpu animate ease-out duration-300 active:scale-100'>
                             {name}
                         </div>

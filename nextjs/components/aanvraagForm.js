@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import Image from 'next/image'
 
@@ -19,15 +19,13 @@ export default function AanvraagForm({
     bericht, setBericht,
 
     // Handle page
-    setSubmitted,
     setAanvraagForm,
     setLastCheck,
-    aanvraag, setAanvraag,
+    setAanvraag,
 
     // New
     setBody,
     image, setImage,
-    imageName, setImageName,
     createObjectURL, setCreateObjectURL
 }) {
     const variants = {
@@ -93,7 +91,6 @@ export default function AanvraagForm({
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0]
             setImage(i)
-            setImageName(i.name)
             setCreateObjectURL(URL.createObjectURL(i))
         }
     }
@@ -150,7 +147,6 @@ export default function AanvraagForm({
             body.append('bericht', bericht)
             setBody(body)
 
-            setSubmitted(true)
 
             setAanvraagForm(false)
             setLastCheck(true)
@@ -206,17 +202,13 @@ export default function AanvraagForm({
                             <div className="flex gap-4 mt-2 items-center justify-between">
 
                                 <motion.div
-                                    layoutId="resize"
+                                    layoutId="resizse"
                                     className="w-full"
-                                    transition={{
-                                        duration: .3,
-                                        ease: "easeOut"
-                                    }}
                                     animate
                                 >
                                     <input
                                         type="file" id="file" name="file"
-                                        className="     w-full p-[3px] bg-[#f7f7f7] rounded-lg shadow-sm border-2 border-dashed
+                                        className=" w-full p-[3px] bg-[#f7f7f7] rounded-lg shadow-sm border-2 border-dashed
                                                     focus:outline-none border-[#92aba6]/40 focus:border-[#92aba6] active:border-[#92aba6]/40 focus:ring-0 focus:ring-[#92aba6] focus:rounded
                                                     file:text-right 
                                                     file:py-2 file:mr-4 file:px-2 file:m-1

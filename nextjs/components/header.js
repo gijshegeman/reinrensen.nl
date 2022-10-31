@@ -1,6 +1,6 @@
-import Nav from "./Nav"
+import Nav from "./nav"
 
-function Header({ }) {
+function Header() {
     return (<>
         <Nav />
     </>)

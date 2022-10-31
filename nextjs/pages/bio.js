@@ -2,7 +2,7 @@ import Image from 'next/future/image'
 import Layout from '../components/layout'
 import profilePic from '../public/img/profile.png'
 
-function Bio({ }) {
+function Bio() {
     return (<>
         <Layout>
             <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">

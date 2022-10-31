@@ -5,7 +5,7 @@ import { server } from '../config'
 
 import { useState } from 'react'
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
     const res = await fetch(`${server}/api/arts`)
     const arts = await res.json()
 

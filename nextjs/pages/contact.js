@@ -1,7 +1,7 @@
 import Layout from "../components/layout"
 import { useState } from "react"
 
-export default function Contact({ }) {
+export default function Contact() {
     const [formReady, setFormReady] = useState(false)
     const [voltooid, setVoltooid] = useState(false)
     const [submitMessage, setSubmitMessage] = useState('')

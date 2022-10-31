@@ -3003,6 +3003,14 @@ typescript-estree@18.0.0:
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
+typescript-estree@^18.1.0:
+  version "18.1.0"
+  resolved "https://registry.yarnpkg.com/typescript-estree/-/typescript-estree-18.1.0.tgz#ea168c3888587cde684ff366e470296196d3ae42"
+  integrity sha512-LvvwoTuPgMO5UyckFXZeNI+m1UH1bkgAXEaHDEtkmxugtlMKM3mzyvSQUdnQ/FhifwaLuoAsNPqTGLrJI/UUaQ==
+  dependencies:
+    lodash.unescape "4.0.1"
+    semver "5.5.0"
+
 typescript@^4.8.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"

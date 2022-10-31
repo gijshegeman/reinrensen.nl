@@ -3,22 +3,21 @@ import Link from './NoScrollLink'
 import instagramIcon from '../icons/instagram.svg'
 import mailIcon from '../icons/mail.svg'
 
-const links = [
-    {
-        "name": "kunstwerken",
-        "href": "/"
-    },
-    {
-        "name": "aanvraag",
-        "href": "/aanvraag"
-    },
-    {
-        "name": "bio",
-        "href": "/bio"
-    }
-]
-
-export default function Footer({ }) {
+export default function Footer() {
+    const links = [
+        {
+            "name": "kunstwerken",
+            "href": "/"
+        },
+        {
+            "name": "aanvraag",
+            "href": "/aanvraag"
+        },
+        {
+            "name": "bio",
+            "href": "/bio"
+        }
+    ]
 
     return (<>
 

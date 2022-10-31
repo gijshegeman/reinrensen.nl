@@ -1,7 +1,6 @@
 import Image from 'next/future/image'
 
 export default function RoundupPage({
-    setSubmitted,
     resetForm,
     aanvraag,
     setAanvraagForm,
@@ -32,7 +31,6 @@ export default function RoundupPage({
                 <div className="flex flex-col gap-5 items-center text-sm text-[#21564e]">
                     <div className="hover:text-[#92aba6] hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100"
                         onClick={() => {
-                            setSubmitted(false)
                             resetForm()
                             setRoundupPage(false)
                             setAanvraagForm(true)

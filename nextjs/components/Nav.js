@@ -18,7 +18,7 @@ const links = [
     }
 ]
 
-function Nav({ }) {
+function Nav() {
     const router = useRouter()
 
     return (<>

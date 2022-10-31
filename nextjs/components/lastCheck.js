@@ -3,9 +3,6 @@ import Image from 'next/image'
 
 export default function LastCheck({
     aanvraag,
-    setSubmitted,
-    setChecked,
-    resetForm,
     setRoundupPage,
     setLastCheck,
     setAanvraagForm,
@@ -16,11 +13,10 @@ export default function LastCheck({
     const [status, setStatus] = useState('')
     const [clicked, setClicked] = useState(false)
 
-
     const handleDefSubmit = async () => {
         setClicked(true)
 
-        const response = await fetch("/api/aanvraag", {
+        await fetch("/api/aanvraag", {
             method: "POST",
             body
         }).then((res) => {
@@ -37,32 +33,25 @@ export default function LastCheck({
             }
 
             if (res.status === 200) {
-                setSubmitted(true)
-                setChecked(true)
-
                 setLastCheck(false)
                 setRoundupPage(true)
             }
 
             if (res.status === 404) {
                 console.log(res.message)
-                setSubmitted(true)
-                setChecked(false)
                 setSubmitMessage('ERROR 404 | Er is iets mis gegaan, probeer het opnieuw. Refresh de pagina.')
             }
 
             if (res.status === 500) {
                 console.log('Internal server error!')
-                setSubmitted(true)
                 setSubmitMessage('ERROR 500 | Er is iets mis gegaan, probeer het opnieuw. Refresh de pagina.')
             }
         })
+
     }
 
     const handleWijzigAanvraag = () => {
-        setSubmitted(false)
-
-        setLastCheck(false);
+        setLastCheck(false)
         setAanvraagForm(true)
     }
 
@@ -116,7 +105,7 @@ export default function LastCheck({
                     </div>
                 </div>
 
-                <div>Druk op 'Bevestig aanvraag' wanneer alle gegevens kloppen!</div>
+                <div>Druk op &apos;Bevestig aanvraag&apos; wanneer alle gegevens kloppen!</div>
 
                 <div className="flex flex-col gap-2">
                     <div className="flex gap-4 justify-between items-baseline text-[#21564e]">

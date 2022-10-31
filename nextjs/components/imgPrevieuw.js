@@ -12,7 +12,7 @@ const BackDrop = ({ setImgPrevieuwActive }) => {
 }
 export default function ImgPrevieuw({
     imgPrevieuwActive, setImgPrevieuwActive,
-    selectedArt, setSelectedArt,
+    selectedArt,
     prevButton,
     nextButton,
     arts

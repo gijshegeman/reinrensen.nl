@@ -74,7 +74,7 @@ handler.post(async (req, res) => {
 
         try {
             let infoNaarRein = await transporter.sendMail(mailNaarRein)
-            // console.log("infoNaarRein:", infoNaarRein) // <-- See response op nodemailer
+            console.log("infoNaarRein:", infoNaarRein) // <-- See response op nodemailer
         } catch (error) {
             console.error("failed to send email naar Rein:", error)
         }
