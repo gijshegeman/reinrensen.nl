@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.0",
+    "typescript": "^4.8.4",
     "typescript-eslint": "^0.0.1-alpha.0",
     "typescript-eslint-parser": "^22.0.0"
   },
@@ -26,7 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
     "autoprefixer": "^10.4.12",
-    "eslint": "8.26.0",
+    "eslint": "^8.26.0",
     "eslint-config-next": "12.3.1",
     "eslint-plugin-react": "^7.31.10",
     "postcss": "^8.4.17",
@@ -37,5 +38,6 @@
   "description": "Website of Rein Rensen.",
   "main": "index.js",
   "author": "Gijs Hegeman.",
-  "private": true
+  "private": true,
+  "repository": "https://github.com/gijshegeman/reinrensen.nl"
 }

@@ -9,8 +9,6 @@ export default function LastCheck({
     setRoundupPage,
     setLastCheck,
     setAanvraagForm,
-
-    // New
     body,
     createObjectURL
 }) {
@@ -59,41 +57,6 @@ export default function LastCheck({
                 setSubmitMessage('ERROR 500 | Er is iets mis gegaan, probeer het opnieuw. Refresh de pagina.')
             }
         })
-
-        // Oud
-        // fetch('/api/aanvraag', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json, text/plain, */*',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // }).then((res) => {
-        //     console.log('Response received')
-
-        //     if (res) setStatus(res.statusText)
-
-        //     if (res.status === 200) {
-        //         setSubmitted(true)
-        //         setChecked(true)
-
-        //         setLastCheck(false)
-        //         setRoundupPage(true)
-        //     }
-
-        //     if (res.status === 404) {
-        //         console.log(res.message)
-        //         setSubmitted(true)
-        //         setChecked(false)
-        //         setSubmitMessage('ERROR 404 | Er is iets mis gegaan, probeer het opnieuw. Refresh de pagina.')
-        //     }
-
-        //     if (res.status === 500) {
-        //         console.log('Internal server error!')
-        //         setSubmitted(true)
-        //         setSubmitMessage('ERROR 500 | Er is iets mis gegaan, probeer het opnieuw. Refresh de pagina.')
-        //     }
-        // })
     }
 
     const handleWijzigAanvraag = () => {
@@ -153,42 +116,6 @@ export default function LastCheck({
                     </div>
                 </div>
 
-                {/* Old */}
-                {/* <div className="flex flex-col gap-1">
-                    <div className="font-bold">Aanvraag</div>
-
-                    <div className="flex justify-between gap-2 items-baseline">
-                        <div>Naam:</div>
-                        <div className="grid w-full gap-1 p-2 rounded-lg bg-[#f7f7f7]">
-                            <div>{aanvraag.voornaam}</div>
-                            <div className="self-end">{aanvraag.achternaam}</div>
-                        </div>
-
-                    </div>
-                    <div className="flex justify-between gap-2 items-baseline">
-                        <div className="flex-none">Telefoonnummer:</div>
-                        <div className="w-full p-2 rounded-lg bg-[#f7f7f7]">{aanvraag.tel}</div>
-                    </div>
-                    <div className="flex justify-between gap-1 items-baseline">
-                        <div className="flex-none">E-mail:</div>
-                        <div className="w-full p-2 rounded-lg bg-[#f7f7f7]">{aanvraag.email}</div>
-                    </div>
-                </div>
-
-                <div className="justify-between gap-2 items-baseline">
-                    <div>Formaat:</div>
-                    <div className="w-full p-2 rounded-lg bg-[#f7f7f7]">
-                        {!aanvraag.custom && !aanvraag.verassing && aanvraag.lengteCM && <div>L {aanvraag.lengteCM} x B {aanvraag.breedteCM} cm</div>}
-                        {aanvraag.custom && <div>L {aanvraag.lengteCM} x B {aanvraag.breedteCM} cm</div>}
-                        {aanvraag.verassing && <div>Ik laat mij verrassen!</div>}
-                    </div>
-                </div>
-
-                <div>
-                    <div>Bericht:</div>
-                    <div className="text-left whitespace-pre-line p-2 rounded-lg bg-[#f7f7f7]">{aanvraag.bericht}</div>
-                </div> */}
-
                 <div>Druk op 'Bevestig aanvraag' wanneer alle gegevens kloppen!</div>
 
                 <div className="flex flex-col gap-2">
@@ -220,10 +147,6 @@ export default function LastCheck({
                     )}
                 </div>
             </div>
-
-
-
-
         </div>
     </>)
 }
