@@ -1,0 +1,13 @@
+## .env file
+.env
+nextjs/.env
+
+## NextJS
+.next
+nextjs/.next/
+nextjs/node_modules
+
+nextjs/pages/test.js
+
+## VSCode
+.vscode
