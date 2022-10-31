@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 # COPY prisma ./prisma/
 RUN yarn install --frozen-lockfile
-RUN yarn prisma generate
+# RUN yarn prisma generate
 
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
@@ -32,7 +32,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-COPY --chown=nextjs:nodejs prisma ./prisma/
+# COPY --chown=nextjs:nodejs prisma ./prisma/
 
 USER nextjs
 
