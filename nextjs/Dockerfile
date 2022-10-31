@@ -4,7 +4,7 @@ FROM node:alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
-COPY prisma ./prisma/
+# COPY prisma ./prisma/
 RUN yarn install --frozen-lockfile
 RUN yarn prisma generate
 
@@ -14,7 +14,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
-RUN yarn prisma generate
+# RUN yarn prisma generate
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
 
