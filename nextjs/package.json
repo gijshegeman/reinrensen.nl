@@ -19,7 +19,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && export NODE_OPTIONS=--openssl-legacy-provider",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && next build",
     "start": "next start",
     "lint": "next lint"
   },
