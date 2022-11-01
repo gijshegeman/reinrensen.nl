@@ -18,6 +18,8 @@ services:
     build: ./nextjs
     ports:
       - "3000:3000"
+    depends_on:
+      - traefik
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.nextjs.rule=Host(`reinrensen.nl`, `www.reinrensen.nl`)'
