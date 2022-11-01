@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  traefik:
+    image: traefik:latest
+    command:
+      - --api.insecure=true
+      - --providers.docker
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./traefik:/etc/traefik
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+  nextjs:
+    container_name: nextjs
+    build: ./nextjs
+    ports:
+      - "3000:3000"
+    depends_on:
+      - traefik
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nextjs.rule=Host(`reinrensen.nl`, `www.reinrensen.nl`)'
+      - 'traefik.http.routers.nextjs.tls=true'
+      - 'traefik.http.routers.nextjs.tls.certresolver=lets-encrypt'
