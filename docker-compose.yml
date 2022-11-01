@@ -24,8 +24,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
   nextjs:
     container_name: nextjs
-    build: 
-      context: ./nextjs
+    build: ./nextjs
     ports:
       - "3000:3000"
     labels:
