@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  reverse-proxy:
+  traefik:
     image: traefik:2.9
     ccommand:
       - --entrypoints.web.address=:80
