@@ -1,21 +1,11 @@
 version: '3.4'
 services:
   traefik:
-    image: traefik:2.9
-    command:
-      - --entrypoints.web.address=:80
-      - --entrypoints.websecure.address=:443
-      - --providers.docker
-      - --api.insecure
-      - --certificatesresolvers.leresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
-      - --certificatesresolvers.leresolver.acme.email=gijshegeman@hotmail.com
-      - --certificatesresolvers.leresolver.acme.storage=/acme.json
-      - --certificatesresolvers.leresolver.acme.tlschallenge=true
+    image: traefik:2.1
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./traefik:/etc/traefik
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -29,4 +19,3 @@ services:
       - 'traefik.http.routers.my-app.rule=Host(`reinrensen.nl`, `www.reinrensen.nl`)'
       - 'traefik.http.routers.my-app.tls=true'
       - 'traefik.http.routers.my-app.tls.certresolver=lets-encrypt'
-      - "traefik.http.services.simple-nextjs.loadbalancer.server.port=3000"
