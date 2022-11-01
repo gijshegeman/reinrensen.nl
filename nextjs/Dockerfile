@@ -11,7 +11,6 @@ RUN apk --no-cache --virtual build-dependencies add \
     make \
     g++ 
 
-
 # Set the working directory
 WORKDIR /app
 

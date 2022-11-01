@@ -3,22 +3,22 @@ import { useRouter } from 'next/router'
 import { isActiveLink } from '../lib/utils'
 import { motion } from 'framer-motion'
 
-const links = [
-    {
-        "name": "kunstwerken",
-        "href": "/"
-    },
-    {
-        "name": "aanvraag",
-        "href": "/aanvraag"
-    },
-    {
-        "name": "bio",
-        "href": "/bio"
-    }
-]
+export default function Nav() {
+    const links = [
+        {
+            "name": "kunstwerken",
+            "href": "/"
+        },
+        {
+            "name": "aanvraag",
+            "href": "/aanvraag"
+        },
+        {
+            "name": "bio",
+            "href": "/bio"
+        }
+    ]
 
-function Nav() {
     const router = useRouter()
 
     return (<>
@@ -63,5 +63,3 @@ function Nav() {
     </>
     )
 }
-
-export default Nav

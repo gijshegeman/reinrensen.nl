@@ -1,6 +1,6 @@
 import Layout from "../components/layout"
 import AanvraagForm from "../components/aanvraagForm"
-import LastCheck from '../components/lastcheck'
+import LastCheck from '../components/lastCheck'
 import RoundupPage from "../components/roundupPage"
 
 import { useState } from "react"
