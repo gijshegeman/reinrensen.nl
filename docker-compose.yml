@@ -2,11 +2,19 @@ version: '3.4'
 services:
   reverse-proxy:
     image: traefik:2.9
-    command: --api.insecure=true --providers.docker
+    ccommand:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker
+      - --api.insecure
+      - --certificatesresolvers.leresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesresolvers.leresolver.acme.email=gijshegeman@hotmail.com
+      - --certificatesresolvers.leresolver.acme.storage=/acme.json
+      - --certificatesresolvers.leresolver.acme.tlschallenge=true
     restart: always
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
       - "8080:8080"
     volumes:
       - ./traefik:/etc/traefik
