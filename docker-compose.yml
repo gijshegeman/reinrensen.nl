@@ -1,25 +1,21 @@
-version: "3.9"
-
+version: '3.4'
 services:
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    restart: unless-stopped
-    volumes:
-      - ./nginx/data/nginx:/etc/nginx/conf.d
-      - ./nginx/data/certbot/conf:/etc/letsencrypt
-      - ./nginx/data/certbot/www:/var/www/certbot
+  traefik:
+    image: traefik:2.1
+    restart: always
     ports:
-      - "80:80"
-      - "443:443"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-  certbot:
-    image: certbot/certbot
-    restart: unless-stopped
+      - '80:80'
+      - '443:443'
     volumes:
-      - ./nginx/data/certbot/conf:/etc/letsencrypt
-      - ./nginx/data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      - ./traefik:/etc/traefik
+      - /var/run/docker.sock:/var/run/docker.sock:ro
   nextjs:
     container_name: nextjs
     build: ./nextjs
+    ports:
+      - "3000:3000"
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.my-app.rule=Host(`reinrensen.nl`, `www.reinrensen.nl`)'
+      - 'traefik.http.routers.my-app.tls=true'
+      - 'traefik.http.routers.my-app.tls.certresolver=lets-encrypt'
