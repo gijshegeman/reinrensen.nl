@@ -1,4 +1,8 @@
 version: '3.4'
+volumes:
+  traefik-ssl-certs:
+    driver: local
+
 services:
   traefik:
     image: traefik:2.1
@@ -7,6 +11,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
+      - /etc/traefik:/etc/traefik
       - ./traefik:/etc/traefik
       - /var/run/docker.sock:/var/run/docker.sock:ro
   nextjs:
