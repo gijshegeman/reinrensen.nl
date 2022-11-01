@@ -17,6 +17,6 @@ services:
       - "3000:3000"
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.my-app.rule=Host(`reinrensen.nl`, `www.reinrensen.nl`)'
-      - 'traefik.http.routers.my-app.tls=true'
-      - 'traefik.http.routers.my-app.tls.certresolver=lets-encrypt'
+      - 'traefik.http.routers.nextjs.rule=Host(`reinrensen.nl`, `www.reinrensen.nl`)'
+      - 'traefik.http.routers.nextjs.tls=true'
+      - 'traefik.http.routers.nextjs.tls.certresolver=lets-encrypt'
