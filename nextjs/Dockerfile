@@ -25,7 +25,7 @@ ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
-run yarn build
+RUN yarn build
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 # COPY --from=builder /app/next.config.js ./
