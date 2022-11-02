@@ -15,7 +15,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 # RUN yarn prisma generate
-RUN yarn build && yarn install --production --ignore-scripts --prefer-offline node --trace-warnings
+RUN yarn build && yarn install --production --ignore-scripts --prefer-offline 
 
 
 # Production image, copy all the files and run next
