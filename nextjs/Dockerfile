@@ -35,7 +35,6 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 # COPY --chown=nextjs:nodejs prisma ./prisma/
 
-
 USER nextjs
 
 EXPOSE 3000
