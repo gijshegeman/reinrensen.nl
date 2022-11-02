@@ -1,22 +1,32 @@
 import Layout from '../components/layout'
 import ArtCollection from '../components/artcollection'
 import ImgPrevieuw from '../components/imgPrevieuw'
-import { server } from '../config'
+// import { server } from '../config'
 
 import { useState } from 'react'
 
-export async function getStaticProps() {
-    const res = await fetch(`${server}/api/arts`)
-    const arts = await res.json()
+// export async function getStaticProps() {
+//     const dev = process.env.NODE_ENV !== 'production'
+//     const server = dev ? 'http://localhost:3000' : 'https://reinrensen.nl'
 
-    return {
-        props: {
-            arts
-        }
-    }
-}
+//     const res = await fetch(`${server}/api/arts`)
+//     const arts = await res.json()
 
-export default function HomePage({ arts }) {
+//     return {
+//         props: {
+//             arts
+//         }
+//     }
+// }
+
+// Alternative
+import data from '../data/data.json'
+
+export default function HomePage() {
+    const arts = [...new
+        Set([].concat(...data.arts.filter(art => art.publish == true).map(work => work)))
+    ]
+
     const [imgPrevieuwActive, setImgPrevieuwActive] = useState(false)
     const [selectedArt, setSelectedArt] = useState('')
 
