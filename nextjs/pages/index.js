@@ -1,10 +1,12 @@
 import Layout from '../components/layout'
 import ArtCollection from '../components/artcollection'
 import ImgPrevieuw from '../components/imgPrevieuw'
-// import { server } from '../config'
 
 import { useState } from 'react'
 
+// Alternative
+import data from '../data/data.json'  // makkelijke optie
+// import { server } from '../config' // optie 1, geeft foutmelding
 // export async function getStaticProps() {
 //     const dev = process.env.NODE_ENV !== 'production'
 //     const server = dev ? 'http://localhost:3000' : 'https://reinrensen.nl'
@@ -19,8 +21,7 @@ import { useState } from 'react'
 //     }
 // }
 
-// Alternative
-import data from '../data/data.json'
+
 
 export default function HomePage() {
     const arts = [...new
