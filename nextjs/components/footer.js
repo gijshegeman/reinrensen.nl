@@ -56,7 +56,6 @@ export default function Footer() {
                                     alt="Mail"
                                     width={25}
                                     height={25}
-                                    objectFit="contain"
                                     quality={75}
                                     className="opacity-80 hover:opacity-100"
                                 />
@@ -71,7 +70,6 @@ export default function Footer() {
                                     alt="Instagram"
                                     width={22}
                                     height={24}
-                                    objectFit="contain"
                                     quality={75}
                                     className="opacity-80 hover:opacity-100"
                                 />
