@@ -41,7 +41,7 @@ export default function Nav() {
                 <div className="flex gap-5">
                     {links.map(({ name, href }) =>
                         <Link key={name} href={href} passHref>
-                            <a className='hover:text-[#92aba6] hover:border-[#92aba6] animate ease-out duration-300'>
+                            <div className='hover:text-[#92aba6] hover:border-[#92aba6] animate ease-out duration-300'>
                                 {name}
                                 {isActiveLink(href, router.pathname) && (
                                     <motion.div
@@ -50,7 +50,7 @@ export default function Nav() {
                                         animate
                                     />
                                 )}
-                            </a>
+                            </div>
                         </Link>
 
                     )}

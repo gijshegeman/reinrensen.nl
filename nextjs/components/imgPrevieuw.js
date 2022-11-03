@@ -86,33 +86,18 @@ export default function ImgPrevieuw({
                             </div>
                             <div className='self-end hover:text-zinc-100 animate ease-out duration-300 ' onClick={() => setImgPrevieuwActive(false)}>&#x2715;</div>
                         </div>
-                        <AnimatePresence
-                            mode='wait'
-                        >
-                            <motion.div
-                                key={title}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0, }}
-                                transition={{
-                                    ease: "easeInOut",
-                                    transition: { duration: .2 }
-                                }}
-                                className='flex flex-col gap-2'
-                            >
-                                <div
-                                    className='drop-shadow-2xl'
-                                >
-                                    <Image
-                                        src={src}
-                                        alt={title}
-                                        width={x}
-                                        height={y}
-                                    />
-                                </div>
-                                <div className='self-start font-bold '>{title}</div>
-                            </motion.div>
-                        </AnimatePresence>
+
+                        <div className='flex flex-col gap-2'>
+                            <div className='drop-shadow-2xl'>
+                                <Image
+                                    src={src}
+                                    alt={title}
+                                    width={x}
+                                    height={y}
+                                />
+                            </div>
+                            <div className='self-start font-bold '>{title}</div>
+                        </div>
                     </motion.div>
                 </motion.div>
             )
