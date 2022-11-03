@@ -1,10 +1,12 @@
-import path from 'path';
-path.resolve('./next.config.js');
+
 import Layout from '../components/layout'
 import ArtCollection from '../components/artcollection'
 import ImgPrevieuw from '../components/imgPrevieuw'
 
 import { useState } from 'react'
+
+const { resolve } = require('path')
+resolve('./next.config.js')
 
 // Alternative
 import data from '../data/data.json'  // makkelijke optie
