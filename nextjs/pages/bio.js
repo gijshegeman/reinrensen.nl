@@ -1,4 +1,4 @@
-import Image from 'next/future/image'
+import Image from 'next/image'
 import Layout from '../components/layout'
 import profilePic from '../public/img/profile.png'
 
