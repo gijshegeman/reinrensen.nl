@@ -1,3 +1,5 @@
+import path from 'path';
+path.resolve('./next.config.js');
 import Layout from '../components/layout'
 import ArtCollection from '../components/artcollection'
 import ImgPrevieuw from '../components/imgPrevieuw'
