@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'PlexSansEL';
+  src: url('../public/fonts/IBMPlexSans-Light.ttf');
+  font-display: swap;
+}
+
+.iconsGreen {
+  filter: brightness(0) saturate(100%) invert(26%) sepia(53%) saturate(449%)
+    hue-rotate(121deg) brightness(94%) contrast(91%);
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #d9dfde inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Scale animation */
+.bounce1 {
+  animation: bounce 1.5s infinite;
+}
+.bounce2 {
+  animation: bounce 1.5s infinite;
+  animation-delay: 0.1s;
+}
+.bounce3 {
+  animation: bounce 1.5s infinite;
+  animation-delay: 0.16s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-5px);
+  }
+  45% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
