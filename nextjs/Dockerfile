@@ -14,9 +14,9 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED 1
 
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY ./ ./
 
-RUN yarn buildAlt
+RUN yarn build
 RUN yarn install --production --ignore-scripts --prefer-offline 
 
 
