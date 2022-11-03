@@ -16,7 +16,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./ ./
 
-RUN yarn run build
+RUN yarn build
 RUN yarn install --production --ignore-scripts --prefer-offline 
 
 
@@ -30,7 +30,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
-RUN yarn run start
+
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 # COPY --from=builder /app/next.config.js ./
