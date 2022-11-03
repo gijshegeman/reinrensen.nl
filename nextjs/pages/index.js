@@ -1,124 +1,96 @@
 
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import data from '../data/data.json';
-import FadeInSection from '../hooks/FadeInSection';
+import Layout from '../components/layout'
+import ArtCollection from '../components/artcollection'
+import ImgPrevieuw from '../components/imgPrevieuw'
 
-const variants = {
-  hidden: {    
-    opacity:0
-  },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { 
-    transition: {
-      type: 'tween',
-    },
-    opacity: 0, 
-    x: 0, 
-    y:0,
-    transition: {
-      type: 'tween',
+import { useState } from 'react'
+
+// Alternative
+import data from '../data/data.json'  // makkelijke optie
+// import { server } from '../config' // optie 1, geeft foutmelding
+// export async function getStaticProps() {
+//     const dev = process.env.NODE_ENV !== 'production'
+//     const server = dev ? 'http://localhost:3000' : 'https://reinrensen.nl'
+
+//     const res = await fetch(`${server}/api/arts`)
+//     const arts = await res.json()
+
+//     return {
+//         props: {
+//             arts
+//         }
+//     }
+// }
+
+export default function HomePage() {
+    const arts = [...new
+        Set([].concat(...data.arts.filter(art => art.publish == true).map(work => work)))
+    ]
+
+    const [imgPrevieuwActive, setImgPrevieuwActive] = useState(false)
+    const [selectedArt, setSelectedArt] = useState('')
+
+    const artIds = arts.map(art => art.id)
+    const highestId = Math.max(...artIds)
+    const lowestId = Math.min(...artIds)
+
+    function handleClick(art) {
+        setImgPrevieuwActive(true)
+        const newSelectedArt = arts.filter(i => i.id === art.id).map(art => art)
+        setSelectedArt(newSelectedArt[0])
+        // console.log('Selected art:', selectedArt)
     }
-  }
-}
 
-function Home({ homePageImages }) {
-  const imagesCol1 = homePageImages.filter((e, a) => a % 3 === 0)
-  const imagesCol2 = homePageImages.filter((e, a) => a % 3 === 1)
-  const imagesCol3 = homePageImages.filter((e, a) => a % 3 === 2)
-  
-  return (
-    <div>
-    <Head>
-        <title>Gijs Hegeman</title>
-        <meta name="description" content="Portfolio of Gijs Hegeman" />
-    </Head>
-        
-    <motion.div
-      variants={variants}
-      initial="hidden"
-      animate="enter"
-      exit="exit"
-      transition={{ type: 'linear' }} // Set the transition to linear
-    >
-        <div className="canvas">
-        <div className="row">
-          <div className="col">
-            {imagesCol1
-              .map((img) => (
-                <div key={img.id} className="post">
-                  <FadeInSection>
-                      <Link key ={img.id} href={`/${img.project}`} scroll={false}>
-                        <a>
-                          <img
-                            src={img.src} 
-                            alt={img.alt}
-                          />
-                        </a>
-                      </Link>
-                  </FadeInSection>
-                </div>
-            ))}
-          </div>
+    function prevButton(currentArtId) {
+        let newArtId = currentArtId - 1
 
-          <div className="col">
-            {imagesCol2
-              .map((img) => (
-                <div key={img.id} className="post">
-                  <FadeInSection>
-                      <Link key ={img.id} href={`/${img.project}`} scroll={false}>
-                        <a>
-                          <img
-                            src={img.src} 
-                            alt={img.alt}
-                          />
-                        </a>
-                      </Link>
-                  </FadeInSection>
-                </div>
-            ))}
-          </div>
+        const newSelectedArt = arts.filter(i => i.id === newArtId).map(art => art)
+        setSelectedArt(newSelectedArt[0])
 
-          <div className="col">
-            {imagesCol3
-              .map((img) => (
-                <div key={img.id} className="post">
-                  <FadeInSection>
-                      <Link key ={img.id} href={`/${img.project}`} scroll={false}>
-                        <a>
-                          <img
-                            src={img.src} 
-                            alt={img.alt}
-                          />
-                        </a>
-                      </Link>
-                  </FadeInSection>
-                </div>
-            ))}
-          </div>
-          
-        </div>     
-      </div>
-    </motion.div>
-    </div>
-    )
-}
+        // Id kleiner dan 0
+        if (newArtId === 0) {
+            const newSelectedArt = arts.filter(i => i.id === highestId).map(art => art)
+            setSelectedArt(newSelectedArt[0])
+        }
 
-export async function getStaticProps(context) {  
-    const images = 
-    [...new
-        Set([].concat(...data.projects.map( project => project.images)))
-    ];
-    images.forEach((o, i) => o.id = i + 1);
-    const homePageImages = images.filter((a) => a.onHomePage === true)
-    
-    return {
-      props: {
-        homePageImages,
-      },
+        // opvolgende ID niet aanwezig
+        if (!artIds.includes(newArtId) && newArtId !== 0) {
+            let extraNewArtId = newArtId - 1
+            const newSelectedArt = arts.filter(i => i.id === extraNewArtId).map(art => art)
+            setSelectedArt(newSelectedArt[0])
+        }
     }
-}
 
-export default Home
+    function nextButton(currentArtId) {
+        let newArtId = currentArtId + 1
+
+        const newSelectedArt = arts.filter(i => i.id === newArtId).map(art => art)
+        setSelectedArt(newSelectedArt[0])
+
+        // Id goter dan hoogste ID 
+        if (newArtId > highestId) {
+            const newSelectedArt = arts.filter(i => i.id === lowestId).map(art => art)
+            setSelectedArt(newSelectedArt[0])
+        }
+
+        // opvolgende ID niet aanwezig
+        if (!artIds.includes(newArtId) && newArtId !== 0) {
+            let extraNewArtId = newArtId + 1
+            const newSelectedArt = arts.filter(i => i.id === extraNewArtId).map(art => art)
+            setSelectedArt(newSelectedArt[0])
+        }
+    }
+
+    return (<>
+        <Layout>
+            <ArtCollection arts={arts} handleClick={handleClick} />
+            <ImgPrevieuw
+                imgPrevieuwActive={imgPrevieuwActive} setImgPrevieuwActive={setImgPrevieuwActive}
+                selectedArt={selectedArt} setSelectedArt={setSelectedArt}
+                prevButton={prevButton}
+                nextButton={nextButton}
+                arts={arts}
+            />
+        </Layout>
+    </>)
+}
