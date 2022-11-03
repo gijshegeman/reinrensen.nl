@@ -1,0 +1,217 @@
+//## Reset
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: MerriWeatherLight;
+}
+body {
+    color: #5e5e5e;
+}
+h3 {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-align: center;
+}
+h4 {
+    text-align: center;
+}
+p {
+    font-family: MerriWeatherLight;
+    font-size: 14px;
+}
+a {
+    text-decoration: none;
+    color: #5e5e5e;
+}
+a:hover {
+    color: black;
+}
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+//## Opmaak met classNames
+// Varibles
+$padding_pictures: 15.5px;
+$margin: 30px;
+$icon: 1.3em;
+
+//fonts
+@font-face{
+    font-family: "ProximaNovaThin";
+    src: url(/fonts/ProximaNovaThin.otf)
+}
+@font-face{
+    font-family: "MerriweatherLight";
+    src: url(/fonts/MerriWeatherLight.ttf)
+}
+
+// Standard
+
+// Logo
+.logo {
+    text-align: center;
+    color: black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 1;
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+.subTitle {
+    font-family: ProximaNovaThin;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+// Navbar
+.navbar {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.navbar a {
+    font-family: ProximaNovaThin;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    
+    display: inline-block;
+    float: none;
+    margin-right: 20px;
+}
+.navbar a:last-child{
+    margin-right: 0px;
+}
+// Canvas
+.canvas {
+    width: auto;
+    height: 100%;
+    display: block;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+}
+
+@media screen and (max-width: 750px) {
+    .canvas {
+      display: block;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
+    .logo{
+        margin-top: 50px;
+        margin-bottom: 17.5px;
+    }
+    .navbar {
+        margin-bottom: 7.5px;
+    }
+}
+
+// Foto blok
+.row {
+    content: "";
+    display: table;
+    clear: both;
+}
+.col {
+    float: left;
+    width: calc(100%/3);
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 750px) {
+    .col {
+      width: 100%;
+    }
+}
+
+// single post
+.post {
+    padding: $padding_pictures;
+    display: block;
+    position: relative;
+}
+.post img {
+    display: block;
+    object-fit: contain;
+}
+
+// Project post
+.projectPost {
+    padding: $padding_pictures;
+
+}
+.projectPost img {
+    display: block;
+}
+
+//## About text
+.about {
+    margin-bottom: ($margin + 20);
+}
+
+// ## Footer
+.footer {
+    text-align: center;
+    margin-bottom: 4em;
+}
+// Footer text
+.footerText {
+    margin-bottom: 35px;
+    font-size: 14px;
+}
+
+// Footer icons
+
+
+.icons {
+    text-align: center;
+    display: inline-flex;
+}
+
+.icon {
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    position: relative;
+    margin-right: 10px;
+    align-self: center;
+    object-position: 50% 50%;
+}
+.icon:last-child {
+    margin-right: 0px;
+}
+.icon img {
+    position: relative;
+}
+
+// Masonry layout
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -15px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 20px;
+}
