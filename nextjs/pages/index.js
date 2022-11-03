@@ -5,9 +5,6 @@ import ImgPrevieuw from '../components/imgPrevieuw'
 
 import { useState } from 'react'
 
-const { resolve } = require('path')
-resolve('./next.config.js')
-
 // Alternative
 import data from '../data/data.json'  // makkelijke optie
 // import { server } from '../config' // optie 1, geeft foutmelding
@@ -24,8 +21,6 @@ import data from '../data/data.json'  // makkelijke optie
 //         }
 //     }
 // }
-
-
 
 export default function HomePage() {
     const arts = [...new
