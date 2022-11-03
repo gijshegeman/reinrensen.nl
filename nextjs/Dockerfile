@@ -37,7 +37,7 @@ COPY lib ./lib
 COPY middleware ./middleware
 COPY pages ./pages
 COPY postcss.config.js ./
-COPY tailwind.config.js ./
+COPY tailwindsud.config.js ./
 
 RUN yarn build
 
