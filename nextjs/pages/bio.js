@@ -6,7 +6,7 @@ import Head from 'next/head'
 function Bio() {
     return (<>
         <Head>
-            <title>Rein Rensen | Bio</title>
+            <title>Rein Rensen | Bio - test</title>
         </Head>
         <Layout>
             <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
@@ -35,7 +35,7 @@ function Bio() {
                             Wilt u uzelf, vriend, buurvrouw of huisdier verrassen met een schilderij van een foto naar eigen keuze? Ga dan naar aanvraag of neem gerust contact met mij op via het mailicoontje onderaan de site.
                             Ik maak met alle plezier een authentiek schilderein voor u!</p>
 
-
+                        gg
 
                     </div>
                 </div>
