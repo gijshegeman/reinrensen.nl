@@ -46,7 +46,6 @@ export default function Footer() {
                     <div>Website by <a className='hover:text-[#92aba6]' href="https://gijshegeman.nl/">Gijs Hegeman</a></div>
 
 
-
                     <div className='flex gap-2 items-center z-10'>
                         {/* Mail */}
                         <div className='hover:scale-[110%] active:scale-100'>
