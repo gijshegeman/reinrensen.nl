@@ -2,8 +2,6 @@
 .env
 nextjs/.env
 
-/data/certbot
-
 # next.js
 .next
 /.next/
