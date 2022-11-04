@@ -92,3 +92,4 @@ zero_downtime_deploy() {
 }
 
 echo -e "${GREEN}## Updating docker without downtime${NOCOLOR}"
+zero_downtime_deploy
