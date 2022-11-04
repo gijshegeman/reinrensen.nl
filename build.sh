@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # # Variablen
-# GREEN='\033[0;32m'
-# RED='\033[0;31m'
-# ORANGE='\033[0;33m'
-# NOCOLOR='\033[0m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+ORANGE='\033[0;33m'
+NOCOLOR='\033[0m'
 
 # var1="$(sudo git pull)"
 # var2="Already up to date."
@@ -47,6 +47,18 @@
 # fi
 
 #  New script
+check_gitUpdate() {
+    var1="$(sudo git pull)"
+    var2="Already up to date."
+
+    if [ "$var1" = "$var2" ]; then 
+        echo -e "${GREEN}## Project up to date, no need to rebuild!${NOCOLOR}"
+    fi
+}
+
+echo -e "${GREEN}## Checking for repository updates ...${NOCOLOR}"
+check_gitUpdate
+
 reload_nginx() {
     docker exec nginx /usr/sbin/nginx -s reload
 }
