@@ -9,7 +9,7 @@ NOCOLOR='\033[0m'
 var1="$(sudo git pull)"
 var2="Already up to date."
 
-ALERT= 5%
+ALERT="5%"
 DISKSPACE=$(df -h /dev/vda1 | grep -vE '^Filesystem|tmpfs|cdrom' | awk '{ print $5 }')
 
 echo -e "${GREEN}## Checking for repository updates?:...${NOCOLOR}"
@@ -24,7 +24,7 @@ else
 
     echo -e "${ORANGE}## DiskSpace left on server: ${DISKSPACE}"
     
-    if ["$DISKSPACE" > "$ALERT"]; then
+    if ["$DISKSPACE" >= "$ALERT"]; then
         echo -e "${RED}## Might be to much diskspace left on server."
         echo -e "${RED}## Docker clean up advised with: docker system prune -a -f"
         read -p "Do you want to run:docker system prune -a -f? (y/N)" decision
