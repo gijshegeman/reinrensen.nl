@@ -29,6 +29,11 @@ else
         echo -e "${RED}## Docker clean up advised with: docker system prune -a -f"
         read -p "Do you want to run:docker system prune -a -f? (y/N)" decision
         if [ "$decision" != "Y" ] && [ "$decision" != "y" ]; then
+            docker-compose down
+            docker system prune -a -f
+            docker rmi $(docker images -q)
+            echo -e "${ORANGE}## Dangeling containers?"
+            docker ps
             exit
         fi
     fi
