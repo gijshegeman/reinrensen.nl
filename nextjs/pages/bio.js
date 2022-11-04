@@ -6,7 +6,7 @@ import Head from 'next/head'
 function Bio() {
     return (<>
         <Head>
-            <title>Rein Rensen | Bio - test</title>
+            <title>Rein Rensen | Bio</title>
         </Head>
         <Layout>
             <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
@@ -34,9 +34,6 @@ function Bio() {
                         <p>Ik heb meerdere portretten en schilderijen van vrienden, kennissen en onbekenden gemaakt. Van hen krijg ik vaak te horen dat het karakter en de gelijkenis van de geschilderde goed overkomt. Dit is voor mij het allerbelangrijkst. Verder probeer ik mijn schilderijen kleurrijk en levendig te maken, zonder dat daarbij de balans in het werk verloren gaat. Het liefst schilder ik close-up portretten of mensen in hun omgeving aan de hand van toegestuurde foto’s die ik met mijn eigen stijl uitwerk tot schilderijen.
                             Wilt u uzelf, vriend, buurvrouw of huisdier verrassen met een schilderij van een foto naar eigen keuze? Ga dan naar aanvraag of neem gerust contact met mij op via het mailicoontje onderaan de site.
                             Ik maak met alle plezier een authentiek schilderein voor u!</p>
-
-                        gg
-
                     </div>
                 </div>
             </div>
