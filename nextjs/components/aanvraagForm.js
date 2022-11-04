@@ -198,7 +198,7 @@ export default function AanvraagForm({
                         {/* File */}
                         <div className="flex flex-col gap-">
                             <div className="font-bold">Voorbeeldfoto</div>
-                            <div>Kies een scherpe foto. Dit is de foto die ik naschilder</div>
+                            <div>Kies een scherpe foto. Dit is de foto die ik naschilder.</div>
                             <div className="flex gap-4 mt-2 items-center justify-between">
 
                                 <motion.div
