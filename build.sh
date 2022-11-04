@@ -53,11 +53,11 @@ check_gitUpdate() {
     var2="Already up to date."
 
     if [ "$var1" = "$var2" ]; then 
-        echo -e "${GREEN}## Project up to date, no need to rebuild!${NOCOLOR}"
+        echo -e "${GREEN}Project up to date, no need to rebuild!${NOCOLOR}"
     fi
 }
 
-echo -e "${GREEN}## Checking for repository updates ...${NOCOLOR}"
+echo -e "${ORANGE}Checking for repository updates ...${NOCOLOR}"
 check_gitUpdate
 
 # Update docker without downtime
@@ -91,5 +91,8 @@ zero_downtime_deploy() {
   reload_nginx  
 }
 
-echo -e "${GREEN}## Updating docker without downtime${NOCOLOR}"
+echo -e "${ORANGE}Updating docker without downtime${NOCOLOR}"
 zero_downtime_deploy
+
+# end
+echo -e "${GREEN}Succesfully run script!${NOCOLOR}"
