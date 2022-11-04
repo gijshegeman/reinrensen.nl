@@ -30,7 +30,7 @@ export default function LinkTree() {
             <title>Rein Rensen | LinkTree</title>
         </Head>
 
-        <div className="flex flex-col gap-10 items-center h-screen mx-auto justify-between">
+        <div className="flex flex-col gap-10 items-center h-full justify-between">
 
             <div className="pt-10 text-6xl font-thin tracking-wider text-[#21564e]">Rein Rensen</div>
 
@@ -60,17 +60,21 @@ export default function LinkTree() {
                             className="iconsGreen hover:opacity-70 hover:scale-75 transform-gpu animate ease-out duration-300"
                         />
                     </Link>
-                    <Link href={'https://www.instagram.com/schilderein'}>
-                        <Image
-                            src={instagramIcon}
-                            alt="Instagram"
-                            width={30}
-                            height={30}
-                            objectFit="contain"
-                            quality={75}
-                            className="iconsGreen hover:scale-75 transform-gpu animate ease-out duration-300 hover:opacity-70"
-                        />
-                    </Link>
+
+                    <div className="scale-[80%]">
+                        <Link href={'https://www.instagram.com/schilderein'} >
+                            <Image
+                                src={instagramIcon}
+                                alt="Instagram"
+                                width={30}
+                                height={30}
+                                objectFit="contain"
+                                quality={75}
+                                className="iconsGreen hover:scale-75 transform-gpu animate ease-out duration-300 hover:opacity-70"
+                            />
+                        </Link>
+                    </div>
+
                 </div>
 
                 <div className='font-thin tracking-wider'>Website by <a className='hover:text-black/60' href="https://gijshegeman.nl/">Gijs Hegeman.</a></div>
