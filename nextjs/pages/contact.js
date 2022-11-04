@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 export default function Contact() {
     const [formReady, setFormReady] = useState(false)
-    const [voltooid, setVoltooid] = useState(false)
+    const [status, setStatus] = useState('')
     const [submitMessage, setSubmitMessage] = useState('')
     const [naam, setNaam] = useState('')
     const [email, setEmail] = useState('')
@@ -21,7 +21,7 @@ export default function Contact() {
             bericht
         }
         if (formReady == false) {
-            setVoltooid("")
+            setStatus("")
         }
         if (naam === '') {
             setSubmitMessage("geen naam ingevuld!")
@@ -55,10 +55,11 @@ export default function Contact() {
 
                     // Submit message
                     setSubmitMessage("")
-                    setVoltooid("Uw bericht is verzonden! \r\nCheck of u een bevestiging heeft ontvangen. \nZo niet probeer het opnieuw.")
+                    setStatus("verstuurd")
                 }
 
                 if (res.status === 404) {
+                    setStatus("error")
                     setSubmitMessage('ERROR 404 | Er is iets mis gegaan, probeer het opnieuw. Refresh de pagina.')
                 }
 
@@ -73,7 +74,7 @@ export default function Contact() {
         <Head>
             <title>Rein Rensen | Contact</title>
         </Head>
-        
+
         <Layout>
             <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
 
@@ -107,7 +108,12 @@ export default function Contact() {
                     </form>
                     <div className="text-center">
                         {submitMessage && <div className="text-rose-700">Let op: {submitMessage}</div>}
-                        {voltooid && <div className="text-lime-700">{voltooid}</div>}
+                        {status === 'verstuurd' && (
+                            <div className="flex flex-col gap-2 text-lime-700">
+                                <div>Berricht succesvol verzonden</div>
+                                <div>U ontvang zo snel mogelijk een bevestigingsmail</div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

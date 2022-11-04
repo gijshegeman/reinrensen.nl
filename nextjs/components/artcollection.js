@@ -62,6 +62,7 @@ function Art({ art, index, handleClick }) {
                         alt={art.title}
                         priority={true}
                         className='shadow-md'
+                        quality={60}
                     />
 
                     <div className="flex flex-col gap-1 text-sm md:hidden">
