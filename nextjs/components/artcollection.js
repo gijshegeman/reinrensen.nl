@@ -60,7 +60,6 @@ function Art({ art, index, handleClick }) {
                         height={art.y}
                         width={art.x}
                         alt={art.title}
-                        priority={true}
                         className='shadow-md'
                         quality={60}
                     />
@@ -81,8 +80,6 @@ function Art({ art, index, handleClick }) {
 
 export default function ArtCollection({ arts, handleClick }) {
     const ascendingSortedArts = [...arts].sort((a, b) => b.volgorde - a.volgorde)
-
-
 
     return (<>
         <motion.div>

@@ -28,6 +28,7 @@ function Bio() {
                         
                         2xl:mt-0
                         2xl:w-2/5
+                        pb-10
                     '>
                         <p>Ik ben Rein Rensen, geboren in Doetinchem op 21 november 1997. Inmiddels woon ik in Zwolle, de stad waar ik bezig ben mijn studie geneeskunde af te ronden. In 2020 ben ik naast mijn studie begonnen met schilderen om mijn creatieve kant beter te kunnen uiten.</p>
                         <p>Ik heb meerdere portretten en schilderijen van vrienden, kennissen en onbekenden gemaakt. Van hen krijg ik vaak te horen dat het karakter en de gelijkenis van de geschilderde goed overkomt. Dit is voor mij het allerbelangrijkst. Verder probeer ik mijn schilderijen kleurrijk en levendig te maken, zonder dat daarbij de balans in het werk verloren gaat. Het liefst schilder ik close-up portretten of mensen in hun omgeving aan de hand van toegestuurde foto’s die ik met mijn eigen stijl uitwerk tot schilderijen.
