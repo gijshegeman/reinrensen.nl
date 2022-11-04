@@ -54,6 +54,8 @@ check_gitUpdate() {
 
     if [ "$var1" = "$var2" ]; then 
         echo -e "${GREEN}Project up to date, no need to rebuild!${NOCOLOR}"
+    else 
+        echo -e "${GREEN}GitHub pull done, project up to date!${NOCOLOR}"
     fi
 }
 
