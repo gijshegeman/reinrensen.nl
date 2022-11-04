@@ -24,7 +24,7 @@ else
 
     echo -e "${ORANGE}## DiskSpace left on server: ${DISKSPACE}"
     
-    if["$DISKSPACE" > "$ALERT"]; then
+    if ["$DISKSPACE" > "$ALERT"]; then
         echo -e "${RED}## Might be to much diskspace left on server."
         echo -e "${RED}## Docker clean up advised with: docker system prune -a -f"
         read -p "Do you want to run:docker system prune -a -f? (y/N)" decision
