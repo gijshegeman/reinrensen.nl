@@ -1,5 +1,6 @@
 import Layout from "../components/layout"
 import { useState } from "react"
+import Head from 'next/head'
 
 export default function Contact() {
     const [formReady, setFormReady] = useState(false)
@@ -69,6 +70,10 @@ export default function Contact() {
     }
 
     return (<>
+        <Head>
+            <title>Rein Rensen | Contact</title>
+        </Head>
+        
         <Layout>
             <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
 

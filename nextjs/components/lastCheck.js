@@ -109,7 +109,7 @@ export default function LastCheck({
 
                 <div className="flex flex-col gap-2">
                     <div className="flex gap-4 justify-between items-baseline text-[#21564e]">
-                        <div className="flex-none hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100" onClick={handleWijzigAanvraag}>&larr; Wijzig aanvraag</div>
+                        <div className="flex-none hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100 hover:text-[#92aba6]" onClick={handleWijzigAanvraag}>&larr; Wijzig aanvraag</div>
                         {clicked
                             ? <div className="w-full flex-col items-center content-center text-white bg-[#21564e] text-xl rounded-lg px-5 py-2 text-center inline-flex items-center shadow-xl hover:shadow-2xl hover:scale-[98%] transform-gpu animate ease-out duration-300">
                                 <div className="flex gap-2 items-center content-center">

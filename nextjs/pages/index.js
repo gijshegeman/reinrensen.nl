@@ -4,6 +4,7 @@ import ArtCollection from '../components/artcollection'
 import ImgPrevieuw from '../components/imgPrevieuw'
 
 import { useState } from 'react'
+import Head from 'next/head'
 
 // Alternative
 import data from '../data/data.json'  // makkelijke optie
@@ -82,6 +83,9 @@ export default function HomePage() {
     }
 
     return (<>
+        <Head>
+            <title>Rein Rensen | Home</title>
+        </Head>
         <Layout>
             <ArtCollection arts={arts} handleClick={handleClick} />
             <ImgPrevieuw

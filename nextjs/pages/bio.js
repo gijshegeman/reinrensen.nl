@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import Layout from '../components/layout'
 import profilePic from '../public/img/profile.png'
+import Head from 'next/head'
 
 function Bio() {
     return (<>
+        <Head>
+            <title>Rein Rensen | Bio</title>
+        </Head>
         <Layout>
             <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
                 <div className='flex flex-col 2xl:flex-row 2xl:gap-10'>

@@ -5,6 +5,8 @@ import RoundupPage from "../components/roundupPage"
 
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import Head from 'next/head'
+
 
 export default function Aanvraag() {
     const variants = {
@@ -71,7 +73,10 @@ export default function Aanvraag() {
 
     const [createObjectURL, setCreateObjectURL] = useState(null)
 
-    return (
+    return (<>
+        <Head>
+            <title>Rein Rensen | Aanvraag</title>
+        </Head>
 
         <Layout>
             <AnimatePresence
@@ -176,5 +181,5 @@ export default function Aanvraag() {
                 )}
             </AnimatePresence>
         </Layout >
-    )
+    </>)
 }
