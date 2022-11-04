@@ -78,16 +78,8 @@ export default function ImgPrevieuw({
                                     z-30
                                     '
                     >
-                        <div className='w-full flex gap-2 justify-between flex-none'>
-                            <div className='flex gap-2'>
-                                <div onClick={() => prevButton(id)} className='hover:text-zinc-100 animate ease-out duration-300'>&#x2190; prev</div>
-                                <div>|</div>
-                                <div onClick={() => nextButton(id)} className='hover:text-zinc-100 animate ease-out duration-300 '>next &#x2192;</div>
-                            </div>
-                            <div className='self-end hover:text-zinc-100 animate ease-out duration-300 ' onClick={() => setImgPrevieuwActive(false)}>&#x2715;</div>
-                        </div>
-
                         <div className='flex flex-col gap-2'>
+                            <div className='self-end hover:text-zinc-100 animate ease-out duration-300 ' onClick={() => setImgPrevieuwActive(false)}>&#x2715;</div>
                             <div className='drop-shadow-2xl'>
                                 <Image
                                     src={src}
@@ -96,7 +88,17 @@ export default function ImgPrevieuw({
                                     height={y}
                                 />
                             </div>
+
+
                             <div className='self-start font-bold '>{title}</div>
+                            <div className='self-end w-full flex gap-2 justify-between flex-none'>
+                                <div className='flex gap-2'>
+                                    <div onClick={() => prevButton(id)} className='hover:text-zinc-100 animate ease-out duration-300'>&#x2190; prev</div>
+                                    <div>|</div>
+                                    <div onClick={() => nextButton(id)} className='hover:text-zinc-100 animate ease-out duration-300 '>next &#x2192;</div>
+                                </div>
+                            </div>
+
                         </div>
                     </motion.div>
                 </motion.div>
