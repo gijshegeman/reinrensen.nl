@@ -34,7 +34,6 @@ export default function LinkTree() {
 
             <div className="pt-10 text-6xl font-thin tracking-wider text-[#21564e]">Rein Rensen</div>
 
-
             <div className="flex flex-col gap-5 items-center text-xl font-thin tracking-widest text-white">
                 {links.map(({ href, name }, index) =>
                     <Link key={index} href={href}>
@@ -61,20 +60,17 @@ export default function LinkTree() {
                         />
                     </Link>
 
-                    <div className="scale-[80%]">
-                        <Link href={'https://www.instagram.com/schilderein'} >
-                            <Image
-                                src={instagramIcon}
-                                alt="Instagram"
-                                width={30}
-                                height={30}
-                                objectFit="contain"
-                                quality={75}
-                                className="iconsGreen hover:scale-75 transform-gpu animate ease-out duration-300 hover:opacity-70"
-                            />
-                        </Link>
-                    </div>
-
+                    <Link href={'https://www.instagram.com/schilderein'} >
+                        <Image
+                            src={instagramIcon}
+                            alt="Instagram"
+                            width={30}
+                            height={30}
+                            objectFit="contain"
+                            quality={75}
+                            className="iconsGreen hover:scale-75 transform-gpu animate ease-out duration-300 hover:opacity-70"
+                        />
+                    </Link>
                 </div>
 
                 <div className='font-thin tracking-wider'>Website by <a className='hover:text-black/60' href="https://gijshegeman.nl/">Gijs Hegeman.</a></div>
