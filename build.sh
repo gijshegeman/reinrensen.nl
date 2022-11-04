@@ -46,7 +46,8 @@ NOCOLOR='\033[0m'
 #     exit
 # fi
 
-#  New script
+##  New script
+# Check git update?
 check_gitUpdate() {
     var1="$(sudo git pull)"
     var2="Already up to date."
@@ -59,6 +60,7 @@ check_gitUpdate() {
 echo -e "${GREEN}## Checking for repository updates ...${NOCOLOR}"
 check_gitUpdate
 
+# Update docker without downtime
 reload_nginx() {
     docker exec nginx /usr/sbin/nginx -s reload
 }
@@ -88,3 +90,5 @@ zero_downtime_deploy() {
   # stop routing requests to the old container  
   reload_nginx  
 }
+
+echo -e "${GREEN}## Updating docker without downtime${NOCOLOR}"
