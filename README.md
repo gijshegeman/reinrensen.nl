@@ -1,3 +1,5 @@
+V1.0 // first full working standalone with SSL enabled
+
 # reinrensen.nl
 This is the personal website of Rein Rensen.
 It is created for his arts and to attract custommers!
