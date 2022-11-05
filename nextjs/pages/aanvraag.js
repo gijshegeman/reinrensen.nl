@@ -41,7 +41,7 @@ export default function Aanvraag() {
     const [customBreedteCM, setCustomBreedteCM] = useState('')
     const [custom, setCustom] = useState('')
     const [verassing, setVerassing] = useState('')
-    const [bericht, setBericht] = useState('Hee Rein, \n\n...')
+    const [bericht, setBericht] = useState('Beste Rein, \n\n...')
 
     const resetForm = () => {
         // Form
