@@ -77,6 +77,7 @@ handler.post(async (req, res) => {
             console.log("infoNaarRein:", infoNaarRein) // <-- See response op nodemailer
         } catch (error) {
             console.error("failed to send email naar Rein:", error)
+            res.status(200).end()
         }
 
         try {
@@ -84,6 +85,7 @@ handler.post(async (req, res) => {
             console.log("infoNaarKlant:", infoNaarKlant) // <-- See response op nodemailer
         } catch (error) {
             console.error("failed to send email naar klant:", error)
+            res.status(200).end()
         }
         res.status(200).end()
     }

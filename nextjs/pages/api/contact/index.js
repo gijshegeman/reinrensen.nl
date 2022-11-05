@@ -49,16 +49,20 @@ export default function handler(req, res) {
         transporter.sendMail(mailNaarKlant, (error, info) => {
             if (error) {
                 console.log(error)
+                res.status(200).end()
             } else {
                 console.log("Email sent: " + info.response)
+                res.status(200).end()
             }
         })
 
         transporter.sendMail(mailNaarRein, (error, info) => {
             if (error) {
                 console.log(error)
+                res.status(200).end()
             } else {
                 console.log("Email sent: " + info.response)
+                res.status(200).end()
             }
         })
     }
