@@ -26,5 +26,6 @@ services:
   nextjs:
     build: ./nextjs
     image: nextjs
+    restart: unless-stopped
     env_file:
       - ./nextjs/.env
