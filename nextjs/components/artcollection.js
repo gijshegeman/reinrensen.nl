@@ -4,7 +4,12 @@ import { AnimatePresence, useAnimation, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
 
-function Art({ art, index, handleClick }) {
+function Art({
+    art,
+    index,
+    handleClick,
+    highestVolgorde
+}) {
     var ranNum = Math.random() * 0.8
 
     const controls = useAnimation()
@@ -40,6 +45,10 @@ function Art({ art, index, handleClick }) {
         },
     }
 
+    // Priority art?
+    const numberFastLoadedArts = 8 // bovenste hoeveelheid arts die snel geladen moeten worden
+    const priorityBorder = highestVolgorde - numberFastLoadedArts
+    const priorityArt = art.volgorde > priorityBorder
 
     return (
         <AnimatePresence
@@ -54,16 +63,29 @@ function Art({ art, index, handleClick }) {
                 onClick={() => handleClick(art)}
             >
                 <div className='flex flex-col gap-3'>
-                    <Image
-                        onLoadingComplete={handleLoad}
-                        src={art.src}
-                        height={art.y}
-                        width={art.x}
-                        alt={art.title}
-                        className='shadow-md'
-                        quality={60}
-                    />
-
+                    {/* With priority */}
+                    {priorityArt && (
+                        <Image
+                            onLoadingComplete={handleLoad}
+                            src={art.src}
+                            height={art.y}
+                            width={art.x}
+                            alt={art.title}
+                            className='shadow-md'
+                            priority
+                        />
+                    )}
+                    {/* Without priority */}
+                    {!priorityArt && (
+                        <Image
+                            onLoadingComplete={handleLoad}
+                            src={art.src}
+                            height={art.y}
+                            width={art.x}
+                            alt={art.title}
+                            className='shadow-md'
+                        />
+                    )}
                     <div className="flex flex-col gap-1 text-sm md:hidden">
                         <p className="font-bold text-sm">{art.title}</p>
                         <div className="flex gap-2 md:text-sm md:hidden">
@@ -81,6 +103,10 @@ function Art({ art, index, handleClick }) {
 export default function ArtCollection({ arts, handleClick }) {
     const ascendingSortedArts = [...arts].sort((a, b) => b.volgorde - a.volgorde)
 
+    // Prioritize highest images
+    const artsVolgorde = arts.map(art => art.volgorde)
+    const highestVolgorde = Math.max(...artsVolgorde)
+
     return (<>
         <motion.div>
             {/* Large */}
@@ -91,7 +117,7 @@ export default function ArtCollection({ arts, handleClick }) {
                             .filter((e, a) => a % 3 === 0)
                             .map((art, index) =>
                                 <div className="relative" key={index}>
-                                    <Art art={art} index={index} handleClick={handleClick} />
+                                    <Art art={art} index={index} handleClick={handleClick} highestVolgorde={highestVolgorde} />
                                 </div>
 
                             )}
@@ -102,7 +128,7 @@ export default function ArtCollection({ arts, handleClick }) {
                             .filter((e, a) => a % 3 === 1)
                             .map((art, index) =>
                                 <div className="relative" key={index}>
-                                    <Art art={art} index={index} handleClick={handleClick} />
+                                    <Art art={art} index={index} handleClick={handleClick} highestVolgorde={highestVolgorde} />
                                 </div>
 
                             )}
@@ -113,7 +139,7 @@ export default function ArtCollection({ arts, handleClick }) {
                             .filter((e, a) => a % 3 === 2)
                             .map((art, index) =>
                                 <div className="relative" key={index}>
-                                    <Art art={art} index={index} handleClick={handleClick} />
+                                    <Art art={art} index={index} handleClick={handleClick} highestVolgorde={highestVolgorde} />
                                 </div>
 
                             )}
@@ -125,7 +151,7 @@ export default function ArtCollection({ arts, handleClick }) {
             <div className='block md:hidden'>
                 <div className="flex flex-col gap-5">
                     {ascendingSortedArts.map((art, index) => (
-                        <Art key={index} art={art} handleClick={handleClick} />
+                        <Art key={index} art={art} handleClick={handleClick} highestVolgorde={highestVolgorde} />
                     ))}
                 </div>
             </div>
