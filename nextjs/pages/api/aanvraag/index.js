@@ -36,7 +36,7 @@ handler.post(async (req, res) => {
         } = req.body
 
         const maillist = [
-            // "reinschildert@gmail.com",
+            "reinschildert@gmail.com",
             "gijshegeman@hotmail.com"
         ]
 
