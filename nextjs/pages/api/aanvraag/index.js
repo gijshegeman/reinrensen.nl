@@ -7,7 +7,8 @@ handler.use(middleware)
 
 export const config = {
     api: {
-        bodyParser: false
+        bodyParser: false,
+        sizeLimit: '250mb'
     }
 }
 

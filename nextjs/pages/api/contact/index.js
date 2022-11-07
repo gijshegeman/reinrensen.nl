@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer"
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     const body = req.body
 
     const maillist = [
@@ -46,25 +46,21 @@ export default function handler(req, res) {
             `
         }
 
-        transporter.sendMail(mailNaarKlant, (error, info) => {
-            if (error) {
-                console.log(error)
-                res.status(200).end()
-            } else {
-                console.log("Email sent: " + info.response)
-                res.status(200).end()
-            }
-        })
+        res.status(200).send({ message: "emails send request succesfull" })
 
-        transporter.sendMail(mailNaarRein, (error, info) => {
-            if (error) {
-                console.log(error)
-                res.status(200).end()
-            } else {
-                console.log("Email sent: " + info.response)
-                res.status(200).end()
-            }
-        })
+        try {
+            let infoNaarRein = await transporter.sendMail(mailNaarRein)
+            console.log("infoNaarRein:", infoNaarRein) // <-- See response op nodemailer
+        } catch (error) {
+            console.error("failed to send email naar Rein:", error)
+        }
+
+        try {
+            let infoNaarKlant = await transporter.sendMail(mailNaarKlant)
+            console.log("infoNaarKlant:", infoNaarKlant) // <-- See response op nodemailer
+        } catch (error) {
+            console.error("failed to send email naar klant:", error)
+        }
+        return
     }
-    res.status(200).end()
 }

@@ -2,6 +2,13 @@ import { useState } from "react"
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
 
+export const config = {
+    api: {
+        bodyParser: false,
+        sizeLimit: '250mb'
+    }
+}
+
 export default function LastCheck({
     aanvraag,
     setRoundupPage,
@@ -37,15 +44,23 @@ export default function LastCheck({
             if (res.status === 200) {
                 setLastCheck(false)
                 setRoundupPage(true)
+                setDelayMessage("")
+            }
+            if (res.status === 413) {
+                setLastCheck(false)
+                setDelayMessage("")
+                setSubmitMessage('ERROR 413 | Er is iets mis gegaan, probeer contact op te nemen via het email icoontje onderaan de pagina en vermeld de foutcode.')
             }
 
             // Fout
             if (res.status === 404) {
                 console.log(res.message)
+                setDelayMessage("")
                 setSubmitMessage('ERROR 404 | Er is iets mis gegaan, refresh de pagina, en probeer het opnieuw.')
             }
 
             if (res.status === 500) {
+                setDelayMessage("")
                 console.log('Internal server error!')
                 setSubmitMessage('ERROR 500 | Er is iets mis gegaan, refresh de pagina, en probeer het opnieuw.')
             }
