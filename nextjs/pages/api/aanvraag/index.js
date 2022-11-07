@@ -5,11 +5,15 @@ import nextConnect from 'next-connect'
 const handler = nextConnect()
 handler.use(middleware)
 
+export const config = {
+    api: {
+        bodyParser: false
+    }
+}
+
 handler.post(async (req, res) => {
     // console.log(req.body)
     // console.log(req.files)
-
-    const body = req.body
 
     let attachment = [
         {
@@ -18,12 +22,24 @@ handler.post(async (req, res) => {
         },
     ]
 
-    const maillist = [
-        "reinschildert@gmail.com",
-        "gijshegeman@hotmail.com"
-    ]
-
     if (req.method === "POST") {
+        const {
+            voornaam,
+            achternaam,
+            emailCustommer,
+            tel,
+            custom,
+            lengteCM,
+            breedteCM,
+            verassing,
+            bericht
+        } = req.body
+
+        const maillist = [
+            // "reinschildert@gmail.com",
+            "gijshegeman@hotmail.com"
+        ]
+
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -32,22 +48,38 @@ handler.post(async (req, res) => {
             }
         })
 
+        const mailNaarRein = {
+            from: `${process.env.EMAIL_SENDER} ${process.env.GMAIL_USER}`,
+            to: maillist,
+            subject: `Nieuwe aanvraag van: ${voornaam} ${achternaam}`,
+            attachments: attachment,
+            text: `Dag Rein,
+                    \r\nEr is een nieuwe aanvraag binnengekomen.
+                    \r\nNaam: ${voornaam} ${achternaam} \nTel: ${tel} \nE-mail: ${emailCustommer} 
+                    \nFormaat: ${custom
+                    ? `aangepast: L ${lengteCM} x B ${breedteCM} cm`
+                    : verassing
+                        ? "Ik laat me verassen"
+                        : `L ${lengteCM} x B ${breedteCM} cm`}
+                    \r\n${bericht}`
+        }
+
         const mailNaarKlant = {
             from: `${process.env.EMAIL_SENDER} ${process.env.GMAIL_USER}`,
-            to: `${body.email}`,
-            subject: `Bevestiging aanvraag schilderij van: ${body.voornaam} ${body.achternaam}`,
+            to: `${emailCustommer}`,
+            subject: `Bevestiging aanvraag schilderij van: ${voornaam} ${achternaam}`,
             attachments: attachment,
-            text: `Beste ${body.voornaam},
+            text: `Beste ${voornaam},
                     \r\nBedankt, de aanvraag is in goede orde ontvangen! 
                     \r\nOver de prijs en de geschatte levertijd zal ik u zo snel mogelijk berichten.
                     \r\nUw ingevulde gegevens zijn:
-                    \r\nNaam: \t\t${body.voornaam} ${body.achternaam} \r\nTel: \t\t\t${body.tel} \r\nE-mail: \t\t${body.email} \r\nFormaat: \t\t${body.custom
-                    ? `aangepast: L ${body.lengteCM} x B ${body.breedteCM} cm`
-                    : body.verassing
+                    \r\nNaam: \t\t${voornaam} ${achternaam} \r\nTel: \t\t\t${tel} \r\nE-mail: \t\t${emailCustommer} \r\nFormaat: \t\t${custom
+                    ? `aangepast: L ${lengteCM} x B ${breedteCM} cm`
+                    : verassing
                         ? "Ik laat me verassen"
-                        : `L ${body.lengteCM} x B ${body.breedteCM} cm`}
+                        : `L ${lengteCM} x B ${breedteCM} cm`}
                     \r\nUw bericht:
-                    \r\n${body.bericht}
+                    \r\n${bericht}
                     \r\n
                     \r\nMocht er toch iets mis zijn gegaan of heeft u een aanvulling en/of vraag? Neem dan gerust contact met mij op via dit mailadres!
                     \r\n\r\nMet vriendelijke groet,
@@ -55,29 +87,13 @@ handler.post(async (req, res) => {
                     \r\n\r\nwww.reinrensen.nl \n\nE-mail: \t\treinschildert@gmail.com \nInstagram: \t@schilderein 
                    `
         }
-
-        const mailNaarRein = {
-            from: `${process.env.EMAIL_SENDER} ${process.env.GMAIL_USER}`,
-            to: maillist,
-            subject: `Nieuwe aanvraag van: ${body.voornaam} ${body.achternaam}`,
-            attachments: attachment,
-            text: `Dag Rein,
-                    \r\nEr is een nieuwe aanvraag binnengekomen.
-                    \r\nNaam: ${body.voornaam} ${body.achternaam} \nTel: ${body.tel} \nE-mail: ${body.email} 
-                    \nFormaat: ${body.custom
-                    ? `aangepast: L ${body.lengteCM} x B ${body.breedteCM} cm`
-                    : body.verassing
-                        ? "Ik laat me verassen"
-                        : `L ${body.lengteCM} x B ${body.breedteCM} cm`}
-                    \r\n${body.bericht}`
-        }
+        res.status(200).send({ message: "emails send request succesfull" })
 
         try {
             let infoNaarRein = await transporter.sendMail(mailNaarRein)
             console.log("infoNaarRein:", infoNaarRein) // <-- See response op nodemailer
         } catch (error) {
             console.error("failed to send email naar Rein:", error)
-            res.status(200).end()
         }
 
         try {
@@ -85,16 +101,11 @@ handler.post(async (req, res) => {
             console.log("infoNaarKlant:", infoNaarKlant) // <-- See response op nodemailer
         } catch (error) {
             console.error("failed to send email naar klant:", error)
-            res.status(200).end()
         }
-        res.status(200).end()
+        return
     }
 })
 
-export const config = {
-    api: {
-        bodyParser: false
-    }
-}
+
 
 export default handler

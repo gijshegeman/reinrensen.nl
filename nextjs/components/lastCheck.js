@@ -99,7 +99,9 @@ export default function LastCheck({
                 >
                     <Image
                         src={createObjectURL}
-                            alt='example IMG' height={"100px"} width={"150px"}
+                        alt='example IMG'
+                        height={pevieuwImgDimensions.height}
+                        width={pevieuwImgDimensions.width}
                     />
                 </div>
 
@@ -119,7 +121,7 @@ export default function LastCheck({
                                     <div>Aan het uploaden</div>
                                 </div>
                             </div>
-                            : <div className="w-full text-center p-2 rounded-lg bg-[#92aba6] hover:bg-[#21564e] text-xl font-bold text-white shadow-xl hover:shadow-2xl hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100 mx-4 px-4" onClick={defSubmitForm}>Bevestig aanvraag</div>
+                            : <div className="w-full text-center p-2 rounded-lg bg-[#92aba6] hover:bg-[#21564e] text-xl font-bold text-white shadow-xl hover:shadow-2xl hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100 mx-4 px-4" onClick={handleDefSubmit}>Bevestig aanvraag</div>
                         }
                     </div>
                 </div>

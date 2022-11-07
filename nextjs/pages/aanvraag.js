@@ -192,6 +192,7 @@ export default function Aanvraag() {
                             setAanvraagForm={setAanvraagForm}
                             setRoundupPage={setRoundupPage}
                             createObjectURL={createObjectURL}
+                            pevieuwImgDimensions={pevieuwImgDimensions}
                         />
                     </motion.div>
                 )}
