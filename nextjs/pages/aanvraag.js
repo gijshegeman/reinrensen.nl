@@ -32,8 +32,8 @@ export default function Aanvraag() {
     const [voornaam, setVoornaam] = useState('')
     const [achternaam, setAchternaam] = useState('')
     const [tel, setTel] = useState('')
-    const [email, setEmail] = useState('')
-    // const [file, setFile] = useState('')
+    const [emailCustommer, setEmailCustommer] = useState('')
+    const [badEmail, setBadEmail] = useState(null)
     const [selected, setSelected] = useState('')
     const [lengteCM, setLengteCM] = useState('')
     const [breedteCM, setBreedteCM] = useState('')
@@ -42,6 +42,28 @@ export default function Aanvraag() {
     const [custom, setCustom] = useState('')
     const [verassing, setVerassing] = useState('')
     const [bericht, setBericht] = useState('Beste Rein, \n\n...')
+    
+    const [body, setBody] = useState(false)
+    const [image, setImage] = useState(null)
+    const [imageName, setImageName] = useState('')
+
+    const [createObjectURL, setCreateObjectURL] = useState(null)
+    const [pevieuwImgDimensions, setPevieuwImgDimensions] = useState('')
+    
+    function isValidEmail(emailCustommer) {
+        return /\S+@\S+\.\S+/.test(emailCustommer);
+    }
+
+    const handleChangeEmail = e => {
+        setEmailCustommer(e.target.value)
+
+        if (!isValidEmail(e.target.value)) {
+            setBadEmail('Email adres niet correct of bestaat niet!');
+        } else {
+            setBadEmail(null);
+        }
+
+    }
 
     const resetForm = () => {
         // Form
@@ -49,7 +71,7 @@ export default function Aanvraag() {
         setVoornaam('')
         setAchternaam('')
         setTel('')
-        setEmail('')
+        setEmailCustommer('')
         setSelected('')
         setLengteCM('')
         setBreedteCM('')
@@ -65,13 +87,6 @@ export default function Aanvraag() {
         setImageName('')
         setCreateObjectURL('')
     }
-
-    // New
-    const [body, setBody] = useState(false)
-    const [image, setImage] = useState(null)
-    const [imageName, setImageName] = useState('')
-
-    const [createObjectURL, setCreateObjectURL] = useState(null)
 
     return (<>
         <Head>
@@ -103,8 +118,8 @@ export default function Aanvraag() {
                                 voornaam={voornaam} setVoornaam={setVoornaam}
                                 achternaam={achternaam} setAchternaam={setAchternaam}
                                 tel={tel} setTel={setTel}
-                                email={email} setEmail={setEmail}
-                                // file={file} setFile={setFile}
+                                emailCustommer={emailCustommer} handleChangeEmail={handleChangeEmail}
+                                badEmail={badEmail}
                                 selected={selected} setSelected={setSelected}
                                 lengteCM={lengteCM} setLengteCM={setLengteCM}
                                 breedteCM={breedteCM} setBreedteCM={setBreedteCM}
@@ -123,6 +138,7 @@ export default function Aanvraag() {
                                 setBody={setBody}
                                 image={image} setImage={setImage} setImageName={setImageName} imageName={imageName}
                                 createObjectURL={createObjectURL} setCreateObjectURL={setCreateObjectURL}
+                                pevieuwImgDimensions={pevieuwImgDimensions} setPevieuwImgDimensions={setPevieuwImgDimensions}
                             />
                         </div>
                     </motion.div>
@@ -147,8 +163,8 @@ export default function Aanvraag() {
                             setLastCheck={setLastCheck}
                             setAanvraagForm={setAanvraagForm}
                             setRoundupPage={setRoundupPage}
+                            pevieuwImgDimensions={pevieuwImgDimensions}
 
-                            // New
                             body={body}
                             createObjectURL={createObjectURL}
                         />
