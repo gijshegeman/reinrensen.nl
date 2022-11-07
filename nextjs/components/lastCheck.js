@@ -60,25 +60,25 @@ export default function LastCheck({
     return (<>
         <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
 
-            <div className="flex flex-col gap-4 text-sm items-center w-full">
+            <div className="flex flex-col gap-4 text-sm w-full">
 
                 <div>Controleer hieronder of uw gegevens kloppen.</div>
 
                 {/* New */}
-                <div className="flex flex-col items-center">
-                    <div className="font-bold">Aanvraag</div>
+                <div className="flex flex-col">
+                    <div className="font-bold">Contact gegevens</div>
                     <div className="flex flex-col">
                         <div className="flex gap-1">
                             <div>{aanvraag.voornaam}</div>
                             <div>{aanvraag.achternaam}</div>
                         </div>
                         <div className="">{aanvraag.tel}</div>
-                        <div>{aanvraag.email}</div>
+                        <div>{aanvraag.emailCustommer}</div>
                     </div>
 
                 </div>
 
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col">
                     <div className="font-bold">Formaat</div>
                     <div>
                         {!aanvraag.custom && !aanvraag.verassing && aanvraag.lengteCM && <div>L {aanvraag.lengteCM} x B {aanvraag.breedteCM} cm</div>}
@@ -87,8 +87,8 @@ export default function LastCheck({
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-1 items-center">
-                    <div className="font-bold">Bericht:</div>
+                <div className="flex flex-col">
+                    <div className="font-bold">Bericht</div>
                     <div className="flex-nonewhitespace-pre-wrap w-4/5">{aanvraag.bericht}</div>
                 </div>
 
