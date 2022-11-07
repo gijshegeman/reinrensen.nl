@@ -7,8 +7,8 @@ export default function AanvraagForm({
     voornaam, setVoornaam,
     achternaam, setAchternaam,
     tel, setTel,
-    email, setEmail,
-    // file, setFile,
+    emailCustommer, handleChangeEmail,
+    badEmail,
     selected, setSelected,
     lengteCM, setLengteCM,
     breedteCM, setBreedteCM,
@@ -26,7 +26,8 @@ export default function AanvraagForm({
     // New
     setBody,
     image, setImage,
-    createObjectURL, setCreateObjectURL
+    createObjectURL, setCreateObjectURL,
+    pevieuwImgDimensions, setPevieuwImgDimensions
 }) {
     const variants = {
         hidden: {
@@ -92,12 +93,45 @@ export default function AanvraagForm({
             const i = event.target.files[0]
             setImage(i)
             setCreateObjectURL(URL.createObjectURL(i))
+
+            // async/promise function for retrieving image dimensions for a URL
+            function imageSize(url) {
+                const img = document.createElement("img")
+
+                const promise = new Promise((resolve, reject) => {
+                    img.onload = () => {
+                        // Natural size is the actual image size regardless of rendering.
+                        // The 'normal' `width`/`height` are for the **rendered** size.
+                        const width = parseInt(img.naturalWidth) / 2
+                        const height = parseInt(img.naturalHeight) / 2
+
+                        // Resolve promise with the width and height
+                        resolve({ width, height });
+                    };
+
+                    // Reject promise on error
+                    img.onerror = reject;
+                });
+
+                // Setting the source makes it start downloading and eventually call `onload`
+                img.src = url
+
+                return promise
+            }
+
+            async function sizes() {
+                const imageUrl = URL.createObjectURL(i)
+                const imageDimensions = await imageSize(imageUrl)
+                setPevieuwImgDimensions(imageDimensions)
+            }
+
+            sizes()
         }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (bericht === 'Hey Rein, \n\n...') {
+        if (bericht === 'Beste Rein, \n\n...') {
             setFormReady(false)
             setSubmitMessage("vergeet niet een persoonlijk bericht en/of voorkeuren achter te laten!")
         } else if (selected === '') {
@@ -106,9 +140,12 @@ export default function AanvraagForm({
         } else if (image === null) {
             setFormReady(false)
             setSubmitMessage("geen voorbeeldfoto geselecteerd!")
-        } else if (email === "") {
+        } else if (emailCustommer === "") {
             setFormReady(false)
             setSubmitMessage("e-mailadres niet ingevuld!")
+        } else if (badEmail === "Email adres niet correct of bestaat niet!") {
+            setFormReady(false)
+            setSubmitMessage("Email adres niet correct of bestaat niet!")
         } else if (tel === "") {
             setFormReady(false)
             setSubmitMessage("telefoonnummer niet ingevuld!")
@@ -125,7 +162,7 @@ export default function AanvraagForm({
                 voornaam,
                 achternaam,
                 tel,
-                email,
+                emailCustommer,
                 custom,
                 verassing,
                 lengteCM,
@@ -139,7 +176,7 @@ export default function AanvraagForm({
             body.append('voornaam', voornaam)
             body.append('achternaam', achternaam)
             body.append('tel', tel)
-            body.append('email', email)
+            body.append('emailCustommer', emailCustommer)
             body.append('custom', custom)
             body.append('verassing', verassing)
             body.append('lengteCM', lengteCM)
@@ -178,6 +215,7 @@ export default function AanvraagForm({
                         <div className="flex flex-col gap-2">
                             <div className="font-bold">Aanvraagformulier</div>
                             <div className="flex justify-between gap-2 items-baseline">
+                                <div>Naam</div>
                                 <input type="text" id="firstname" name="firstname" placeholder="Voornaam" className="w-full p-2 rounded-lg bg-[#f7f7f7] focus:outline-none focus:border-[#21564e] focus:ring-1 focus:ring-[#92aba6] ring-inset shadow-sm " onChange={(e) => setVoornaam(e.target.value)} value={voornaam} required />
                                 <input type="text" id="lastname" name="lastname" placeholder="Achternaam" className="w-full p-2 rounded-lg bg-[#f7f7f7] focus:outline-none focus:border-[#21564e] focus:ring-1 focus:ring-[#92aba6] ring-inset shadow-sm" onChange={(e) => setAchternaam(e.target.value)} value={achternaam} required />
                             </div>
@@ -189,17 +227,22 @@ export default function AanvraagForm({
                             </div>
 
                             {/* E-mail */}
-                            <div className="flex justify-between gap-2 items-baseline">
-                                <div className="flex-none">E-mail</div>
-                                <input type="email" id="email" name="email" placeholder="youremail@provider.com" required className="w-full p-2 rounded-lg bg-[#f7f7f7] focus:outline-none focus:border-[#21564e] focus:ring-1 focus:ring-[#92aba6] ring-inset shadow-sm" onChange={(e) => setEmail(e.target.value)} value={email} />
+                            <div className="flex flex-col gap-1">
+                                <div className="flex justify-between gap-2 items-baseline">
+                                    <div className="flex-none">E-mail</div>
+                                    <input type="email" id="emailCustommer" name="emailCustommer" placeholder="youremail@provider.com" required className="w-full p-2 rounded-lg bg-[#f7f7f7] focus:outline-none focus:border-[#21564e] focus:ring-1 focus:ring-[#92aba6] ring-inset shadow-sm" onChange={handleChangeEmail} value={emailCustommer} />
+
+                                </div>
+                                {badEmail && <h2 className="text-rose-700">{badEmail}</h2>}
                             </div>
+
                         </div>
 
                         {/* File */}
-                        <div className="flex flex-col gap-">
+                        <div className="flex flex-col">
                             <div className="font-bold">Voorbeeldfoto</div>
                             <div>Kies een scherpe foto. Dit is de foto die ik naschilder.</div>
-                            <div className="flex gap-4 mt-2 items-center justify-between">
+                            <div className="flex flex-col gap-4 mt-2 items-center justify-between">
 
                                 <motion.div
                                     layoutId="resizse"
@@ -226,7 +269,7 @@ export default function AanvraagForm({
                                     onExitComplete={() => window.scrollTo(0, 0)}
                                     mode='wait'
                                 >
-                                    {image && (
+                                    {image && pevieuwImgDimensions.width && (
                                         <motion.div
                                             key='1'
                                             variants={variants}
@@ -243,8 +286,9 @@ export default function AanvraagForm({
                                             <Image
                                                 src={createObjectURL}
                                                 alt='example IMG'
-                                                height={"150px"}
-                                                width={"200px"}
+                                                height={pevieuwImgDimensions.height}
+                                                width={pevieuwImgDimensions.width}
+
                                             />
                                         </motion.div>
                                     )}

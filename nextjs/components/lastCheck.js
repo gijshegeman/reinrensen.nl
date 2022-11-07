@@ -6,6 +6,7 @@ export default function LastCheck({
     setRoundupPage,
     setLastCheck,
     setAanvraagForm,
+    pevieuwImgDimensions,
     body,
     createObjectURL
 }) {
@@ -58,31 +59,26 @@ export default function LastCheck({
     return (<>
         <div className="md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]">
 
-            <div className="flex flex-col gap-4 text-sm">
+            <div className="flex flex-col gap-4 text-sm items-center w-full">
 
                 <div>Controleer hieronder of uw gegevens kloppen.</div>
 
                 {/* New */}
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center">
                     <div className="font-bold">Aanvraag</div>
-                    <div className="grid grid-cols-2">
-                        <div>Naam:</div>
+                    <div className="flex flex-col">
                         <div className="flex gap-1">
                             <div>{aanvraag.voornaam}</div>
                             <div>{aanvraag.achternaam}</div>
                         </div>
-
-                        <div className="flex-none">Telefoonnummer:</div>
                         <div className="">{aanvraag.tel}</div>
-
-                        <div>E-mail:</div>
                         <div>{aanvraag.email}</div>
-
                     </div>
+
                 </div>
 
-                <div className="grid grid-cols-2">
-                    <div className="font-bold">Formaat:</div>
+                <div className="flex flex-col items-center">
+                    <div className="font-bold">Formaat</div>
                     <div>
                         {!aanvraag.custom && !aanvraag.verassing && aanvraag.lengteCM && <div>L {aanvraag.lengteCM} x B {aanvraag.breedteCM} cm</div>}
                         {aanvraag.custom && <div>L {aanvraag.lengteCM} x B {aanvraag.breedteCM} cm</div>}
@@ -90,19 +86,21 @@ export default function LastCheck({
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2">
+                <div className="flex flex-col gap-1 items-center">
                     <div className="font-bold">Bericht:</div>
-                    <div className="whitespace-pre-wrap">{aanvraag.bericht}</div>
+                    <div className="flex-nonewhitespace-pre-wrap w-4/5">{aanvraag.bericht}</div>
                 </div>
 
-                <div className="grid grid-cols-2">
-                    <div className="font-bold">Voorbeeldfoto:</div>
-                    <div>
-                        <Image
-                            src={createObjectURL}
+                <div
+                    className={pevieuwImgDimensions.height > pevieuwImgDimensions.width
+                        ? "flex w-5/6 max-w-xl"
+                        : "flex max-w-7xl"
+                    }
+                >
+                    <Image
+                        src={createObjectURL}
                             alt='example IMG' height={"100px"} width={"150px"}
-                        />
-                    </div>
+                    />
                 </div>
 
                 <div>Druk op &apos;Bevestig aanvraag&apos; wanneer alle gegevens kloppen!</div>
@@ -121,7 +119,7 @@ export default function LastCheck({
                                     <div>Aan het uploaden</div>
                                 </div>
                             </div>
-                            : <div className="w-full text-center p-2 rounded-lg bg-[#92aba6] hover:bg-[#21564e] text-xl font-bold text-white shadow-xl hover:shadow-2xl hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100" onClick={handleDefSubmit}>Bevestig aanvraag</div>
+                            : <div className="w-full text-center p-2 rounded-lg bg-[#92aba6] hover:bg-[#21564e] text-xl font-bold text-white shadow-xl hover:shadow-2xl hover:scale-[102%] transform-gpu animate ease-out duration-300 active:scale-100 mx-4 px-4" onClick={defSubmitForm}>Bevestig aanvraag</div>
                         }
                     </div>
                 </div>

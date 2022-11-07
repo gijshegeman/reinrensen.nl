@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from './NoScrollLink'
 import instagramIcon from '../icons/instagram.svg'
 import mailIcon from '../icons/mail.svg'
