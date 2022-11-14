@@ -74,10 +74,10 @@ zero_downtime_deploy() {
   # bring a new container online, running new code  
   # (nginx continues routing to the old container only)
   echo -e "${GREEN}bring a new container online, running new code, (nginx continues routing to the old container only)!${NOCOLOR}" 
-  docker-compose up -d --no-deps --scale $service_name=2 --force-recreate $service_name
+  docker-compose up -d --no-deps --scale --force-recreate $service_name=2 --no-recreate $service_name
 
   # wait for new container to be available
-  echo -e "${GREEN}Wait for new container to be available. ${NOCOLOR}"  
+  echo -e "${GREEN}Waiting for new container to be available... ${NOCOLOR}"  
   new_container_id=$(docker ps -f name=$service_name -q | head -n1)
   new_container_ip=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $new_container_id)
   curl --silent --include --retry-connrefused --retry 30 --retry-delay 1 --fail http://$new_container_ip:3000/ || exit 1
