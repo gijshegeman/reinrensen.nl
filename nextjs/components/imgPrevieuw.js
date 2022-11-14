@@ -17,7 +17,14 @@ export default function ImgPrevieuw({
     nextButton,
     arts
 }) {
-    const { id, title, src, x, y } = selectedArt || arts[0]
+    const {
+        id,
+        title,
+        subtitle,
+        src,
+        x,
+        y
+    } = selectedArt || arts[0]
 
     const variants = {
         hidden: {
@@ -91,6 +98,7 @@ export default function ImgPrevieuw({
 
 
                             <div className='self-start font-bold '>{title}</div>
+                            {subtitle && <div className='self-start font-thin tracking-widest'>{subtitle}</div>}
                             <div className='self-end w-full flex gap-2 justify-between flex-none'>
                                 <div className='flex gap-2'>
                                     <div onClick={() => prevButton(id)} className='hover:text-zinc-100 animate ease-out duration-300'>&#x2190; prev</div>
