@@ -43,26 +43,6 @@ export default function HomePage() {
     }
 
     function prevButton(currentArtId) {
-        let newArtId = currentArtId - 1
-
-        const newSelectedArt = arts.filter(i => i.id === newArtId).map(art => art)
-        setSelectedArt(newSelectedArt[0])
-
-        // Id kleiner dan 0
-        if (newArtId === 0) {
-            const newSelectedArt = arts.filter(i => i.id === highestId).map(art => art)
-            setSelectedArt(newSelectedArt[0])
-        }
-
-        // opvolgende ID niet aanwezig
-        if (!artIds.includes(newArtId) && newArtId !== 0) {
-            let extraNewArtId = newArtId - 1
-            const newSelectedArt = arts.filter(i => i.id === extraNewArtId).map(art => art)
-            setSelectedArt(newSelectedArt[0])
-        }
-    }
-
-    function nextButton(currentArtId) {
         let newArtId = currentArtId + 1
 
         const newSelectedArt = arts.filter(i => i.id === newArtId).map(art => art)
@@ -77,6 +57,26 @@ export default function HomePage() {
         // opvolgende ID niet aanwezig
         if (!artIds.includes(newArtId) && newArtId !== 0) {
             let extraNewArtId = newArtId + 1
+            const newSelectedArt = arts.filter(i => i.id === extraNewArtId).map(art => art)
+            setSelectedArt(newSelectedArt[0])
+        }
+    }
+
+    function nextButton(currentArtId) {
+        let newArtId = currentArtId - 1
+
+        const newSelectedArt = arts.filter(i => i.id === newArtId).map(art => art)
+        setSelectedArt(newSelectedArt[0])
+
+        // Id kleiner dan 0
+        if (newArtId === 0) {
+            const newSelectedArt = arts.filter(i => i.id === highestId).map(art => art)
+            setSelectedArt(newSelectedArt[0])
+        }
+
+        // opvolgende ID niet aanwezig
+        if (!artIds.includes(newArtId) && newArtId !== 0) {
+            let extraNewArtId = newArtId - 1
             const newSelectedArt = arts.filter(i => i.id === extraNewArtId).map(art => art)
             setSelectedArt(newSelectedArt[0])
         }

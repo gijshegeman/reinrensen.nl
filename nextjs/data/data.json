@@ -26,7 +26,7 @@
       "sizeCM": "35 x 45 cm",
       "dateMade": "03-08-2022",
       "dateAdded": "",
-      "publish": true
+      "publish": false
     },
     {
       "id": 3,
@@ -54,7 +54,7 @@
       "sizeCM": "",
       "dateMade": "20-02-2022",
       "dateAdded": "",
-      "publish": true
+      "publish": false
     },
     {
       "id": 5,
@@ -124,7 +124,7 @@
       "sizeCM": "",
       "dateMade": "13-02-2022",
       "dateAdded": "",
-      "publish": true
+      "publish": false
     },
     {
       "id": 10,
@@ -147,7 +147,7 @@
       "sizeCM": "",
       "dateMade": "28-12-2020",
       "dateAdded": "",
-      "publish": true
+      "publish": false
     },
     {
       "id": 12,
@@ -161,7 +161,7 @@
       "sizeCM": "",
       "dateMade": "05-11-2021",
       "dateAdded": "",
-      "publish": true
+      "publish": false
     },
     {
       "id": 13,
@@ -233,6 +233,81 @@
       "sizeCM": "60 x 80 cm",
       "dateMade": "14-11-2022",
       "dateAdded": "14-11-2022",
+      "publish": true
+    },
+    {
+      "id": 18,
+      "volgorde": 17,
+      "title": "PussyKaters",
+      "subtitle": "",
+      "typeArt": "Acryl op MDF plaat",
+      "src": "/img/PussyKaters.png",
+      "x": 2782,
+      "y": 3760,
+      "price": 0,
+      "sizeCM": "60 x 80 cm",
+      "dateMade": "",
+      "dateAdded": "10-02-2023",
+      "publish": true
+    },
+    {
+      "id": 19,
+      "volgorde": 18,
+      "title": "Brandaris",
+      "subtitle": "",
+      "typeArt": "Acryl op MDF plaat",
+      "src": "/img/Brandaris.png",
+      "x": 3755,
+      "y": 2705,
+      "price": 0,
+      "sizeCM": "60 x 80 cm",
+      "dateMade": "",
+      "dateAdded": "10-02-2023",
+      "publish": true
+    },
+    {
+      "id": 20,
+      "volgorde": 19,
+      "title": "Experiment 1",
+      "subtitle": "",
+      "typeArt": "Acryl op MDF plaat",
+      "src": "/img/Experiment_1.png",
+      "x": 2666,
+      "y": 3609,
+      "price": 0,
+      "sizeCM": "60 x 80 cm",
+      "dateMade": "",
+      "dateAdded": "10-02-2023",
+      "publish": true
+    },
+    {
+      "id": 21,
+      "volgorde": 20,
+      "title": "Chris en Amber",
+      "subtitle": "",
+      "typeArt": "Acryl op MDF plaat",
+      "src": "/img/Chris_en_Amber.png",
+      "x": 2886,
+      "y": 3661,
+      "price": 0,
+      "sizeCM": "60 x 80 cm",
+      "dateMade": "",
+      "dateAdded": "10-02-2023",
+      "publish": true
+    },
+    {
+      "id": 22,
+      "volgorde": 21,
+      "title": "Draw me like one of your french girls",
+      "subtitle": "",
+      "typeArt": "Acryl op MDF plaat",
+      "src": "/img/Draw_me_like_one_of_your_french_girls.png",
+      "x": 2858,
+      "y": 3600,
+      "price": 0,
+      "sizeCM": "60 x 80 cm",
+      "dateMade": "",
+      "dateAdded": "10-02-2023",
       "publish": true
     }
   ]
