@@ -275,7 +275,7 @@
       "x": 2666,
       "y": 3609,
       "price": 0,
-      "sizeCM": "60 x 80 cm",
+      "sizeCM": "A4",
       "dateMade": "",
       "dateAdded": "10-02-2023",
       "publish": true
@@ -290,7 +290,7 @@
       "x": 2886,
       "y": 3661,
       "price": 0,
-      "sizeCM": "60 x 80 cm",
+      "sizeCM": "35 x 45 cm",
       "dateMade": "",
       "dateAdded": "10-02-2023",
       "publish": true
@@ -305,7 +305,7 @@
       "x": 2858,
       "y": 3600,
       "price": 0,
-      "sizeCM": "60 x 80 cm",
+      "sizeCM": "35 x 45 cm",
       "dateMade": "",
       "dateAdded": "10-02-2023",
       "publish": true
