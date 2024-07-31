@@ -1,8 +1,6 @@
 {
-  "name": "reinrensen.nl",
   "version": "1.0.0",
   "author": "Gijs Hegeman",
-  "license": "MIT",
   "description": "Personal website of Rein Rensen, a upcoming artist.",
   "dependencies": {
     "framer-motion": "^11.3.19",
