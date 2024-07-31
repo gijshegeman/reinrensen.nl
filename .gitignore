@@ -18,7 +18,6 @@ nextjs/.env
 /node_modules 
 /.pnp
 .pnp.js
-/nextjs/yarn.lock
 
 /nextjs/.next
 /nextjs/.next/
