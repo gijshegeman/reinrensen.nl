@@ -33,24 +33,24 @@ export default function Expo() {
                     <div className='flex flex-col gap-[30px]'>
                         {ascendingSortedArts
                             .filter((e, a) => a % 3 === 0)
-                            .map(art =>
-                                <ArtCol art={art} highestVolgorde={highestVolgorde} />
+                            .map((art, index) =>
+                                <ArtCol key={index} art={art} highestVolgorde={highestVolgorde} />
                             )}
                     </div>
 
                     <div className='flex flex-col gap-[30px]'>
                         {ascendingSortedArts
                             .filter((e, a) => a % 3 === 1)
-                            .map(art =>
-                                <ArtCol art={art} highestVolgorde={highestVolgorde} />
+                            .map((art, index) =>
+                                <ArtCol key={index} art={art} highestVolgorde={highestVolgorde} />
                             )}
                     </div>
 
                     <div className='flex flex-col gap-[30px]'>
                         {ascendingSortedArts
                             .filter((e, a) => a % 3 === 2)
-                            .map(art =>
-                                <ArtCol art={art} highestVolgorde={highestVolgorde} />
+                            .map((art, index) =>
+                                <ArtCol key={index} art={art} highestVolgorde={highestVolgorde} />
                             )}
                     </div>
                 </div>
@@ -59,8 +59,8 @@ export default function Expo() {
             {/* Mobile */}
             <div className='block md:hidden'>
                 <div className="flex flex-col gap-5">
-                    {ascendingSortedArts.map(art => (
-                        <ArtCol art={art} highestVolgorde={highestVolgorde} />
+                    {ascendingSortedArts.map((art, index) => (
+                        <ArtCol key={index} art={art} highestVolgorde={highestVolgorde} />
                     ))}
                 </div>
             </div>
