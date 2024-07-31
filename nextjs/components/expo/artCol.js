@@ -58,8 +58,6 @@ export default function ArtCol({
                 animate={controls}
                 initial="hidden"
                 variants={squareVariants}
-
-                onClick={() => handleClick(art)}
             >
                 <div className='flex flex-col gap-3'>
                     {/* With priority */}
