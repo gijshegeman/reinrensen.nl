@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'PlexSansEL';
+    src: url('../public/fonts/IBMPlexSans-Light.ttf');
+    font-display: swap;
+}

@@ -1,65 +1,28 @@
-import Link from './NoScrollLink'
-import { useRouter } from 'next/router'
-import { isActiveLink } from '../lib/utils'
-import { motion } from 'framer-motion'
+import Link from "next/link";
+
+const links = [
+    {
+        title: 'home',
+        href: '/'
+    },
+    {
+        title: 'bio',
+        href: '/bio'
+    }
+]
 
 export default function Nav() {
-    const links = [
-        {
-            "name": "kunstwerken",
-            "href": "/"
-        },
-        {
-            "name": "aanvraag",
-            "href": "/aanvraag"
-        },
-        {
-            "name": "bio",
-            "href": "/bio"
-        }
-    ]
 
-    const router = useRouter()
-
-    return (<>
-
-        <div>
-
-            {/* Navbar */}
-            <div className="
-                flex justify-between
-                items-baseline
-                text-sm
-                p-[20px]
-                pb-[40px]
-                
-                font-PlexSans
-                text-[#21564e]  
-                md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]              
-            ">
-                <div className="text-xl sm:text-2xl font-bold"><Link href={"/"} passHref>Rein Rensen</Link></div>
-                <div className="flex gap-5">
-                    {links.map(({ name, href }) =>
-                        <Link key={name} href={href} passHref>
-                            <div className='hover:text-[#92aba6] hover:border-[#92aba6] animate ease-out duration-300'>
-                                {name}
-                                {isActiveLink(href, router.pathname) && (
-                                    <motion.div
-                                        layoutId="navigation-underline"
-                                        className="w-full border border-[#21564e] rounded-full"
-                                        animate
-                                    />
-                                )}
-                            </div>
-                        </Link>
-
-                    )}
-                </div>
-
+    return (
+        <div className="flex justify-between items-end gap-2 mb-5">
+            <div className="flex flex-col">
+                <Link href={'/'} className='text-[24px] font-[300]'>Rein Rensen</Link>
+                <div className="tracking-widest font-thin text-xs">Artworks</div>
             </div>
 
+            <div className="flex gap-2 items-baseline text-xs font-thin uppercase tracking-widest">
+                {links.map((link, i) => (<Link key={i} href={link.href}>{link.title}</Link>))}
+            </div>
         </div>
-
-    </>
     )
 }

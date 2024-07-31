@@ -3,12 +3,9 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, useAnimation, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
-
-function Art({
+export default function ArtCol({
     art,
-    index,
-    handleClick,
-    highestVolgorde
+    highestVolgorde,
 }) {
     var ranNum = Math.random() * 0.8
 
@@ -50,8 +47,10 @@ function Art({
     const priorityBorder = highestVolgorde - numberFastLoadedArts
     const priorityArt = art.volgorde > priorityBorder
 
+    const { id } = art
     return (
         <AnimatePresence
+            key={id}
             mode='wait'
         >
             <motion.div
@@ -59,14 +58,14 @@ function Art({
                 animate={controls}
                 initial="hidden"
                 variants={squareVariants}
-                key={index}
+
                 onClick={() => handleClick(art)}
             >
                 <div className='flex flex-col gap-3'>
                     {/* With priority */}
                     {priorityArt && (
                         <Image
-                            onLoadingComplete={handleLoad}
+                            onLoad={handleLoad}
                             src={art.src}
                             height={art.y}
                             width={art.x}
@@ -78,7 +77,7 @@ function Art({
                     {/* Without priority */}
                     {!priorityArt && (
                         <Image
-                            onLoadingComplete={handleLoad}
+                            onLoad={handleLoad}
                             src={art.src}
                             height={art.y}
                             width={art.x}
@@ -98,65 +97,4 @@ function Art({
             </motion.div>
         </AnimatePresence >
     )
-}
-
-export default function ArtCollection({ arts, handleClick }) {
-    const ascendingSortedArts = [...arts].sort((a, b) => b.volgorde - a.volgorde)
-
-    // Prioritize highest images
-    const artsVolgorde = arts.map(art => art.volgorde)
-    const highestVolgorde = Math.max(...artsVolgorde)
-
-    return (<>
-        <motion.div>
-            {/* Large */}
-            <div className='hidden md:block md:mx-[10vw] lg:mx-[15vw] xl:mx-[20vw] 2xl:mx-[25vw]'>
-                <div className='grid grid-cols-3 gap-[30px]'>
-                    <div className='flex flex-col gap-[30px]'>
-                        {ascendingSortedArts
-                            .filter((e, a) => a % 3 === 0)
-                            .map((art, index) =>
-                                <div className="relative" key={index}>
-                                    <Art art={art} index={index} handleClick={handleClick} highestVolgorde={highestVolgorde} />
-                                </div>
-
-                            )}
-                    </div>
-
-                    <div className='flex flex-col gap-[30px]'>
-                        {ascendingSortedArts
-                            .filter((e, a) => a % 3 === 1)
-                            .map((art, index) =>
-                                <div className="relative" key={index}>
-                                    <Art art={art} index={index} handleClick={handleClick} highestVolgorde={highestVolgorde} />
-                                </div>
-
-                            )}
-                    </div>
-
-                    <div className='flex flex-col gap-[30px]'>
-                        {ascendingSortedArts
-                            .filter((e, a) => a % 3 === 2)
-                            .map((art, index) =>
-                                <div className="relative" key={index}>
-                                    <Art art={art} index={index} handleClick={handleClick} highestVolgorde={highestVolgorde} />
-                                </div>
-
-                            )}
-                    </div>
-                </div>
-            </div>
-
-            {/* Mobile */}
-            <div className='block md:hidden'>
-                <div className="flex flex-col gap-5">
-                    {ascendingSortedArts.map((art, index) => (
-                        <Art key={index} art={art} handleClick={handleClick} highestVolgorde={highestVolgorde} />
-                    ))}
-                </div>
-            </div>
-
-        </motion.div>
-
-    </>)
 }
