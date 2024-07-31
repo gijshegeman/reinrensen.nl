@@ -4,27 +4,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    type ArtType = {
-      id: number;
-      volgorde: number;
-      title: string;
-      typeArt: string;
-      src: string;
-      y: number;
-      x: number;
-      price: string;
-      sizeCM: string;
-      dateMade: string;
-      dateAdded: string;
-      publish: boolean;
-      subtitle?: string;
-    };
-
-    const artsData: ArtType[] = data.arts as ArtType[];
-
-    // Filter the arts to get only the published ones
-    const arts: ArtType[] = artsData.filter((art: ArtType) => art.publish);
-
+    const arts = [
+      ...new Set(
+        [].concat(
+          ...data.arts.filter((art) => art.publish == true).map((work) => work)
+        )
+      ),
+    ];
     return NextResponse.json(arts, { status: 200 });
   } catch (err) {
     console.error(err);
