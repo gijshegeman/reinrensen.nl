@@ -38,7 +38,9 @@ export default function RootLayout({ children }) {
         "
       >
         <div className=' 
-                
+          pt-2
+          px-5
+          md:pt-5
           md:px-16
           lg:px-[250px]
           xl:px-[350px]'>
