@@ -56,4 +56,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-/nextjs/yarn.lock
+./nextjs/yarn.lock
