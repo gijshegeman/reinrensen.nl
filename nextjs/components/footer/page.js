@@ -39,6 +39,7 @@ export default function Footer() {
                         <div className="text-lg font-bold">Website</div>
                         <div className="flex flex-col text-xs font-IBMPlexSansLight uppercase tracking-widest">
                             <Link href={'/'}>Home</Link>
+                            <Link href={'/gallery'}>Gallery</Link>
                             <Link href={'/bio'}>Bio</Link>
                         </div>
                     </div>
